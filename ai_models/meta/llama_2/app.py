@@ -6,7 +6,6 @@ from llama_index.core.settings import Settings  # Import Settings class
 import logging
 import os
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
-import pdb
 
 logging.basicConfig(filename='../logs/llama2_model.log', level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -17,7 +16,7 @@ documents = SimpleDirectoryReader("./sample_data/pdf_samples/").load_data()
 # Initialize HuggingFace Embeddings
 embed_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 # embed_model = HuggingFaceEmbeddings(model_name="BAAI/bge-small-en-v1.5") #-- We can also use this model
-pdb.set_trace()
+
 # Initialize LLama2 model (load it only once)
 llm = CTransformers(model='llama-2-7b-chat.ggmlv3.q8_0.bin',
                     model_type='llama',

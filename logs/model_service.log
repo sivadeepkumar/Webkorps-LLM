@@ -1,0 +1,385 @@
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /amazon_model/bedrock [POST]
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 14, in bedrock_tech
+    response = kb.retrieve_from_kb(kb_id, query)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/ai_models/amazon/bedrock_kb_agent.py", line 150, in retrieve_from_kb
+    response = client.retrieve(
+               ^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 1001, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 1027, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/signers.py", line 199, in sign
+    auth.add_auth(request)
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 19:06:32] "[35m[1mPOST /amazon_model/bedrock HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /amazon_model/bedrock [POST]
+Traceback (most recent call last):
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+                                                ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+         ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 16, in bedrock_tech
+    response = kb.retrieve_from_kb(kb_id, query)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/ai_models/amazon/bedrock_kb_agent.py", line 150, in retrieve_from_kb
+    response = client.retrieve(
+               ^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 1001, in _make_api_call
+    http, parsed_response = self._make_request(
+                            ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/client.py", line 1027, in _make_request
+    return self._endpoint.make_request(operation_model, request_dict)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 119, in make_request
+    return self._send_request(request_dict, operation_model)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 198, in _send_request
+    request = self.create_request(request_dict, operation_model)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/endpoint.py", line 134, in create_request
+    self._event_emitter.emit(
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 412, in emit
+    return self._emitter.emit(aliased_event_name, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 256, in emit
+    return self._emit(event_name, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/hooks.py", line 239, in _emit
+    response = handler(**kwargs)
+               ^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/signers.py", line 105, in handler
+    return self.sign(operation_name, request)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/signers.py", line 199, in sign
+    auth.add_auth(request)
+  File "/Users/mac/Documents/Open AI services/webkorps_llm/llm_model/lib/python3.11/site-packages/botocore/auth.py", line 418, in add_auth
+    raise NoCredentialsError()
+botocore.exceptions.NoCredentialsError: Unable to locate credentials
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 19:08:49] "[35m[1mPOST /amazon_model/bedrock HTTP/1.1[0m" 500 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 19:58:47] "[31m[1mPOST /open_ai_model/ HTTP/1.1[0m" 405 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 19:58:56] "[33mPOST /open_ai_model/cryopost HTTP/1.1[0m" 404 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+ERROR:ai_models.open_ai.model_service:Error in processing query.Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).file_name: cryoport_text.txtquery: what is the id collection
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 55, in dependable_faiss_import
+    import faiss
+ModuleNotFoundError: No module named 'faiss'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/open_ai/model_service.py", line 16, in process_query
+    embeddings = OpenAIEmbeddings()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 931, in from_texts
+    return cls.__from(
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 883, in __from
+    faiss = dependable_faiss_import()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 57, in dependable_faiss_import
+    raise ImportError(
+ImportError: Could not import faiss python package. Please install it with `pip install faiss-gpu` (for CUDA supported GPU) or `pip install faiss-cpu` (depending on Python version).
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:00:58] "POST /open_ai_model/cryoport HTTP/1.1" 200 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:faiss.loader:Loading faiss with AVX512 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:04:24] "POST /open_ai_model/cryoport HTTP/1.1" 200 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:05:17] "POST /open_ai_model/query HTTP/1.1" 200 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:06:30] "POST /open_ai_model/query HTTP/1.1" 200 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:06:58] "POST /open_ai_model/query HTTP/1.1" 200 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:08:26] "POST /open_ai_model/webkorps_query HTTP/1.1" 200 -
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 20:10:05] "POST /amazon_model/bedrock HTTP/1.1" 200 -
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+ERROR:app:Exception on /amazon_model/sample [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 30, in query_model
+    response = client.invoke_knowledge_base(
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/botocore/client.py", line 918, in __getattr__
+    raise AttributeError(
+AttributeError: 'Bedrock' object has no attribute 'invoke_knowledge_base'
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:08:37] "[35m[1mPOST /amazon_model/sample HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /amazon_model/sample [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 30, in query_model
+    response = client.invoke_knowledge_base(
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/botocore/client.py", line 918, in __getattr__
+    raise AttributeError(
+AttributeError: 'Bedrock' object has no attribute 'invoke_knowledge_base'
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:09:06] "[35m[1mPOST /amazon_model/sample HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /amazon_model/sample [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 30, in query_model
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/botocore/client.py", line 918, in __getattr__
+    raise AttributeError(
+AttributeError: 'Bedrock' object has no attribute 'invoke_knowledge_base'
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:14:44] "[35m[1mPOST /amazon_model/sample HTTP/1.1[0m" 500 -
+ERROR:app:Exception on /amazon_model/sample [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 30, in query_model
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/botocore/client.py", line 918, in __getattr__
+    raise AttributeError(
+AttributeError: 'Bedrock' object has no attribute 'invoke_knowledge_base'
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:16:30] "[35m[1mPOST /amazon_model/sample HTTP/1.1[0m" 500 -
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:16:49] "POST /amazon_model/bedrock HTTP/1.1" 200 -
+ERROR:app:Exception on /amazon_model/sample [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/simple_bedrock.py", line 30, in query_model
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/llama_model_env/lib/python3.9/site-packages/botocore/client.py", line 918, in __getattr__
+    raise AttributeError(
+AttributeError: 'Bedrock' object has no attribute 'invoke_knowledge_base'
+INFO:werkzeug:127.0.0.1 - - [08/Apr/2024 22:17:28] "[35m[1mPOST /amazon_model/sample HTTP/1.1[0m" 500 -
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: BAAI/bge-small-en-v1.5
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: BAAI/bge-small-en-v1.5
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [09/Apr/2024 00:43:15] "POST /meta/llama_openai/query HTTP/1.1" 200 -
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [09/Apr/2024 14:30:02] "POST /meta/llama_openai/query HTTP/1.1" 200 -
+ERROR:app:Exception on /amazon_model/bedrock [POST]
+Traceback (most recent call last):
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
+    return cors_after_request(app.make_response(f(*args, **kwargs)))
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/app.py", line 18, in bedrock_tech
+    response = kb.retrieve_from_kb(kb_id, query)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/ai_models/amazon/bedrock_kb_agent.py", line 150, in retrieve_from_kb
+    response = client.retrieve(
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/botocore/client.py", line 565, in _api_call
+    return self._make_api_call(operation_name, kwargs)
+  File "/home/dell/Documents/webkorps_llm/webkorps_llm/env_models/lib/python3.9/site-packages/botocore/client.py", line 1021, in _make_api_call
+    raise error_class(parsed_response, operation_name)
+botocore.errorfactory.ResourceNotFoundException: An error occurred (ResourceNotFoundException) when calling the Retrieve operation: Knowledge Base with id QRJWFQFERS does not exist
+INFO:werkzeug:127.0.0.1 - - [09/Apr/2024 14:31:03] "[35m[1mPOST /amazon_model/bedrock HTTP/1.1[0m" 500 -

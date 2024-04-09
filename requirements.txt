@@ -1,0 +1,25 @@
+awscli
+boto3
+
+
+# openai simple 
+flask
+python-dotenv
+flask_cors
+langchain_openai
+langchain_community
+langchain
+faiss-cpu
+
+
+
+# LLM model
+llama_index
+sentence-transformers
+llama-index-llms-langchain
+llama-index-embeddings-langchain
+ctransformers
+
+
+# Gradient model
+llama_index.embeddings.gradient

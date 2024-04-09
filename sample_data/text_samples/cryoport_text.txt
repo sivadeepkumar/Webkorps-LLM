@@ -1,0 +1,358 @@
+
+Login and Navigation
+1. Once you have received your login credentials, go to www.cryoportal.com to log in.
+2. Enter your email address and password, then click Sign In. If you have changed your
+password and since forgotten it, click Forgot Password? to have a new one emailed to you.
+
+7.Account Management
+Cryoport System’s Logistics Management Platform, Cryoportal® 2, allows clients to view and
+manage shipping sites, commodities, and other order-related parameters.
+Profile
+User Profiles can be accessed in the lower-left corner at the Help and User Section.
+11. Select the Profile option in the Content Panel to edit a profile.
+11.1.
+The buttons in the lower-right corner allow you to save changes and alter your
+password.
+8
+Users
+Individual Cryoportal® 2 user accounts can be modified according to the user's role. These roles
+will determine who may view or edit data, place orders, run reports, and/or add new users.
+12. Click on the Navigation Menu icon to access the Libraries tab. Users are featured below
+on the left.
+13. To review an existing user, click their name in the user list. Additional user information will
+appear in the Secondary Content Panel.
+
+14
+Click the Create User button and a confirmation message will appear.
+12
+Sites
+Sites are created to save and manage locations where commodities will be shipped to and/or
+from. Once the sites are saved in the Cryoportal® 2, they can be used to create new shipments.
+16. Click on the Navigation Menu icon to view the Libraries tab. From there, you will be able to
+access the Sites.
+
+16.1.A list of existing sites will be displayed. Identify existing sites through the
+Search Sites field. Using the Search Site field will allow for a more refined
+search.
+
+16
+Contacts
+Contacts who are created in the Sites module are also saved in the Contacts module.
+Additional contacts can also be created directly in the Contacts module to be used in any
+shipment.
+20. Click on the Navigation Menu icon to view the Libraries tab. From there you will be able to
+access the Contacts.
+
+18
+Commodities
+Commodities are created to save and manage different types of products that will be shipped
+between sites. Once the commodities are saved in Cryoportal® 2, they can be used to create
+new shipments.
+23. Click on the Navigation Menu icon to view the Libraries tab. From there you will be able to
+access the Commodities.
+
+
+
+19
+24.1.
+Changes can be made by clicking the Edit button to the right.
+22
+Order Creation and Management
+The Cryoportal® 2 allows clients to place, view, and manage their orders with many of the same
+tools and options utilized by Cryoport System’s 24/7/365 Logistics Management team.
+Order Entry
+Only Client Users, Client Managers, and Client Admins can create orders in Cryoportal® 2.
+Once an order is created, the shipment will be reviewed and approved by Cryoport Systems’
+Logistics Management team for processing by a Cryoport Systems Logistics Center.
+27. Go to the Navigation Menu icon. On the Orders tab, click on + New Order to create a new
+order.
+28. Order Type: Choose the type of Order and click the Save & Continue button.
+
+23
+29. Step 1 of 6
+Shipping Route: Sites should be previously created and saved to provide the address and
+contact information for the locations where commodities are being shipped to and/or from. For
+more information, please see the Sites section (page 13) of Account Management.
+29.1.Select the Origin from the Site drop-down list.
+
+24
+29.1.1. This will populate the additional fields with the required information from the
+existing site.
+27
+29.1.3.2. For international shipments, the destination site will be designated as the
+Importer of Record. If there is a separate Importer of Record, please check
+the box and enter the required information below.
+28
+29.1.3.3. Click the Save & Continue button to proceed.
+29.1.3.4.
+30. Step 2 of 6
+Shippers & Commodities: Cryoport Systems Shippers and Accessories are used to
+safely transport Commodities from the origin to the destination site. If you have any
+questions about which solutions will best meet your needs, please contact Cryoport
+System’s 24/7/356 Customer Service and Logistics Management team by phone (+1 949470-2305) or email (cs@cryoport.com).
+30.1.
+Select the Shipper from the Shipper Model drop-down list.
+To customize the list of available shippers to your account, please
+contact Cryoport Systems’ Customer Service and Logistics Management team.
+30.2.Select the Commodity by clicking on + Add Commodity.
+30.2.1. The Commodity section will expand for the entry of commodities to be shipped
+in this unit.
+30.2.2. Commodities should be previously created and saved to provide the
+description, declared value, and classifications of the product. For more
+information, please see the Commodities section (pages 19-22) of Account
+Management.
+32
+30.3.
+Select the Commodity from the Commodity drop-down list.
+30.3.1. Adjust the Quantity and $/Unit as needed.
+30.3.2. Add a Lot/Serial # as needed.
+30.3.3. Update other values as needed.
+30.3.4. Click +Add Commodity and repeat steps 30.2 and 30.3 as needed to add
+more commodities to the shipper.
+33
+30.5.2. Click + Accessory and repeat steps 30.5 as needed to add different types of
+Accessories to the shipper.
+30.6.
+If additional shippers are needed for this order, click + Add Shipper located in the
+lower right corner. Repeat steps 30.1 to 30.5.
+30.7.
+Once finished, click Save & Continue located in the lower right corner to proceed.
+31. Step 3 of 6
+Documentation: Order Information
+31.1.
+Within the Cryoport PO # field, enter your purchase order or other reference number
+to appear on Cryoport Systems’ invoice, which will be sent to your accounts payable
+department.
+31.2.
+If you received a quote from Cryoport Systems, enter the Quote # to ensure the
+order is billed accordingly within the Cryoport Quote # field.
+31.3.
+Enter any additional reference numbers/names in the Study/Project # field.
+34
+31.4.
+Enter any special notes/instructions for the Cryoport Systems Logistics Management
+team and/or the Logistics Center Operations team in the Additional Instructions Or
+Comments field.
+31.5.
+In the Leg 2 Documentation section, enter the reference number that will be used
+on the shipping documents for this leg under Shipment Reference # field.
+31.6.
+In the Documents section, use the + Document button to upload any documents
+associated with the order such as manually-created waybills, import/export permits,
+certificates, product spec sheets, etc.
+31.7.Once completed, click Save & Continue located on the bottom right corner.
+32. Step 4 of 6
+Notifications: The Cryoportal® 2 will send automated emails to the user-selected recipients
+for up to 8 separate events.
+
+35
+32.1.
+
+Submit,Approve,Cancel,Return Leg,Data Logger,Shipper Certification
+32.9.
+Add Notification recipents by using the + Contact and + Email buttons in the lower
+left corner. Select/Deselect Notifications as needed.
+33. Step 5 of 6
+Schedule Transportation: Cryoport Systems’ standard order model includes three (3)
+shipment legs.
+33.1.
+Leg 1: Arrival of the equipment at the origin site.
+
+36
+33.2.
+Request shipper(s) arrival at the Origin site (Leg 1 delivery).
+33.2.1. Select the arrival date for the shipper(s) to the Origin site. Orders placed by
+12:00PM local time from one of the Cryoport Systems Logistics Centers or
+Cryoport Systems Global Supply Chain Centers can arrive at the earliest by
+the next business day or later if selected.
+33.2.3. Leg 2: Transport of the loaded product from origin to destination.
+Request shipper(s) pickup from the Origin site (Leg 2 pickup).
+
+37
+33.2.4. Select the Pickup Date and Pickup Time for the collection from the Origin
+site (Leg 2 pickup) after the commodity has been loaded. If there are any
+specific Pickup Location/Instructions, fill out this information in the field
+provided. To minimize the overall transit time, we recommend scheduling the
+Leg 2 pickup during the same afternoon as the Leg 1 delivery.
+33.2.6. For standard courier service, select “Cryoport FedEx” for the Shipping
+Account and “Priority Overnight” or “International Priority” for the Service
+Level.
+33.2.7. For specialty courier services, select the appropriate specialty courier for the
+Shipping Account and the corresponding transit time for the Service Level.
+33.3.
+For 4 Leg Shipments: Repeat step 33.2 for Leg 3 as prompted.
+
+33.4.4. Once completed, click Save & Continue to proceed.
+
+
+39
+34. Step 6 of 6
+Review and Submit Order:
+
+40
+34.1.
+Review the order details to ensure accuracy of the Route, Schedule, Shippers &
+Commodities, Documentation, and Notifications before submitting the order for
+approval.
+34.2.Make any corrections by clicking the Edit Icon on the right of the appropriate
+section.
+34.3.Once all details are confirmed, click Submit Order.
+34.4.
+A confirmation will appear on screen to indicate the completion of the order
+submission process.
+41
+Submitted and Unsubmitted Orders
+Submitted orders that have gone through the six-step Order Builder Setup process and are
+awaiting approval are considered completed.
+35. To view Submitted order(s), click on the Navigation Menu icon to view the Orders tab.
+From there, you will be able to access the Submitted order(s).
+36. A list of existing submitted orders will be displayed. Using the Search field will allow for a
+more refined search when looking for submitted orders.
+44
+40.1.Once the six (6) step Order Builder setup is complete, click the Submit Order
+button.
+45.Template Creation and Management
+The Cryoportal® 2 allows clients to utilize templates to place orders with many of the same tools
+used by Cryoport Systems’ 24/7/365 Logistics Management team and as available through the
+Order Builder Setup.
+41. Click on the Navigation Menu icon to access the Orders tab. From there, you will be able
+to access the Templates.
+42. A list of existing templates will be displayed in the tab. To review an existing template along
+with the corresponding details, click on the template number or name in the list. Using the
+Search Order Template field will allow for a more refined search.
+43. The details of the template will be displayed in the Secondary Content Panel.
+44. In the secondary content panel, you will be able to review the Route, Shippers &
+Commodities, Documentation, Schedule, Notifications, and Change Log.
+45. Click the Execute button on the right of the secondary content panel to move forward with
+the order building process. The majority of the information will prepopulate. As you work
+through the order building process, there will be opportunities to edit and update the details
+in each step of the order. Click the Save & Continue button after each step to continue.
+
+Standing Orders
+Standing Orders can be created to automatically execute templates at predetermined times
+based on user preferences.
+55. To view Standing Orders, click on the Navigation Menu icon to view the Orders tab.
+From there you will be able to access the Standing Orders.
+56. A list of existing Standing Orders will be displayed. Using the Search Standing Order field
+will allow for a more refined search.
+
+58.3.
+A confirmation message will appear, and the new standing order will be saved in the
+Standing Order list.
+Shipment Tracking and Management
+Cryoport Systems’ Logistics Management Platform, Cryoportal® 2, allows clients to track and
+manage their shipments with many of the same tools and options that are utilized by Cryoport
+Systems’ 24/7 Logistics Management team.
+Tracking Shipments
+Shipments can be viewed in the Cryoportal® 2 by Client Managers, Client Users, and Client
+Admins. Once orders have been submitted, the user's shipment will be reviewed by Cryoport
+Systems’ Logistics Management team and approved for processing at a Cryoport Systems
+Logistics Center.
+59. Click on the Navigation Menu icon to gain access to the Orders tab. From there, you will
+be able access shipments that are In Transit.
+68
+60. Click on the Order # from the list of In Transit orders to view additional information
+in the Secondary Content Panel. Using the Search Orders field will allow for a more
+refined search.
+61. The Secondary Content Panel will allow you to review the shipment details in the
+Overview and Status tabs.
+
+69
+61.1.
+The Overview tab will provide information on the shipment such as the Route,
+Additional Instructions or Comments, Shipper(s) details (Commodities, Alarm
+Bands, Documentation, and Accessories), Schedule, Subscriptions, and Order
+History.
+61.2.
+The Status tab will provide the Tracking details and monitored events of the
+shipper(s) throughout the shipment.
+70
+61.2.1. The Secondary Content Panel will provide additional actions and documents
+regarding the shipment.
+61.3.
+The Actions drop-down list will feature options to Copy Order, Create Order
+Template, and Edit Route. The Temperature Monitoring will provide additional
+data and information regarding the shipment.
+71
+61.4.
+The Printing drop-down list will provide documentation such as Waybills, Packing
+Slips, Commercial Invoice, Bill of Lading, Ordering Report, Pick Lists, Order
+Details, Pricing, All Shipper Barcodes, All Shipper Certifications, Shipping
+Labels, Package Leg Labels, Shipment Report, Shipping Plan Intelligence,
+Package Details, Temperature Stability Reports, and Print Dangerous Goods
+Consignee.
+61.5.
+The Live View™ feature will provide data and information about the shipper(s) such
+as Location, Shock, Internal Temperature, External Temperature, Tilt, Humidity,
+and Pressure throughout its shipment journey.
+
+72
+61.5.1. To access Live View™, click the Overview tab and scroll down to the Shipper
+Information area.
+
+61.5.2. Click the Live View™ button, and the page will open in a separate tab.
+
+73
+Submissions Overview
+Submitted orders can be viewed in the Cryoportal® 2 by going to the Navigation Menu and
+selecting the Orders tab. From there, you will be able to view Submitted orders.
+
+62. Click on the Order # from the list of Submitted Orders to view additional details in the
+Secondary Content Panel.
+63. The Secondary Content Panel will feature the shipment information in the Details,
+Process Controls, Documentation, Notifications and Notes tabs
+
+74
+63.1.
+The Details tab will provide information regarding the Route, Shipment Contents
+(Shipper(s), Commodities, Alarm Bands, and Accessories), Transaction
+Details, and Schedule.
+
+63.2.
+The Process Controls tab will provide the Additional Instructions or Comments
+and Process Controls for the assigned shipper(s).
+
+76
+Active Exceptions
+Active Exceptions can be viewed in Cryoportal® 2 by going to the Navigation Menu and
+selecting the Orders tab. From there, you will be able to access Exceptions.
+
+64. A list of Active Exceptions will appear on the screen. From this view, you will be able to
+see each Order on the list and its Severity. Using the Search field will allow for a more
+refined search when looking for Active Exceptions.
+
+64.1.
+When you click on the Severity of an order, a new window will open with the
+information regarding the package.
+
+77
+Order History
+Order History can be viewed in the Cryoportal® 2 by going to the Navigation Menu and
+selecting the Orders tab. From there, you will be able to view existing History.
+
+65. Click on the Order # from the Order History list to view additional details in the Secondary
+Content Panel. Using the Search Orders field will allow for a more refined search.
+
+66.1.
+The Overview tab will provide information regarding the Route, Additional
+Instructions or Comments, Shipper(s) details (Commodities, Alarm Bands,
+Documentation, and Transaction Details), Schedule, Subscriptions, and Order
+History.
+79
+66.2.
+The Status tab will provide the Tracking details and events of the shipper(s)
+throughout the shipment.
+80
+67. The Secondary Content Panel will provide additional actions and documents.
+67.1.
+The Actions drop-down list will feature options to Copy Order, Create Order
+Template, and Edit Route. The Temperature Monitoring will provide additional
+data and information regarding the shipment.
+83.Account Data
+Cryoport System’s Logistics Management Platform, Cryoportal® 2, allows clients to view account
+data through the Customer Dashboard.
+84.Customer Support
+Please contact Cryoport's 24/7/356 Customer Service and Logistics Management team
+if you have any questions or concerns.
+Email: cs@cryoport.com
+Phone: +1 (949) 470-2305

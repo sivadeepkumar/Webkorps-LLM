@@ -1,0 +1,207 @@
+Groups & Records  
+ 
+Query – How to Add a record?  
+ 
+Adding a record to a group in your system is a straightforward process that involves a few key steps. To 
+commence this musical journey of data entry, first, identify the group where you intend to place the new 
+record. This can be achieved either by selecti ng the group from your list of favourites or by navigating to the 
+Groups menu. Once you've chosen the desired group, click on the "Add New" option to initiate the record 
+addition process.  
+Now, onto the creative part – entering the record details. In this example, we'll consider the Assets group, 
+but keep in mind that the process may vary slightly depending on the group. Every group will have unique 
+options for adding a record, but the common thread is the necessity to input information. A user -friendly 
+interface will guide you through this step, ensuring that you provide essential details for your new record. Be 
+mindful of fields marked with an asterisk (*) as they denote required information.  
+As you embark on this creative process, feel free to let your im agination flow within the bounds of the data 
+you're inputting. The system encourages a flexible and enjoyable experience while ensuring you capture the 
+necessary information accurately. Once you've input all the desired details, click the "Save" button, an d like 
+magic, your new record comes into existence within the chosen group.  
+ 
+Query - How to view a Record?  
+There are a couple of flexible ways to navigate and view records, allowing you the freedom to choose what 
+suits you best. Asset Panda, being a fan of  choices, provides you with options to tailor your experience. The 
+initial step is to identify the group that houses the specific record you wish to explore. This can be achieved 
+in two ways:  
+Groups Menu:  Head to the Groups menu and choose the relevant gro up from the list.  
+Let's say, for instance, you opt for the Employees group.  
+Selecting the Record:  Once you've landed in the desired group, the next step is to select the spe cific 
+record you want to review  
+It's worth highlighting that these steps remain consistent across all groups, ensuring a standardized 
+and user -friendly experience. While  the specific records may differ based on the group's focus, the 
+process of selecting, viewing, and exploring them remains uniform.  
+Congratulations! You've successfully learned how to view records in Asset Panda. Whether you're assessing 
+employee records or exploring data in other groups, this versatile approach caters to your preferences, 
+providing a seamless and efficient way to access and appreciate the information contained within your 
+records.  
+Query - How to track a Record?  
+ 
+The significance of record s cannot be overstated, and in the context of Asset Panda, we take pride in 
+providing an effortless and efficient solution to track and manage them. If you wish to monitor the users 
+responsible for creating specific records, adding a User Stamp field to yo ur group is a straightforward Groups & Records  
+ 
+process. Whether you're enhancing an existing group or creating a new one, the steps remain consistent. 
+Here's how to seamlessly integrate a User Stamp field into your group settings:  
+1. Begin by clicking on the settings icon and  selecting "Group Settings."  
+2. Within Group Settings, click on the "Edit" link for the group you intend to modify. Scroll down to 
+the Fields section.  
+3. To introduce the User Stamp field, click on "Add New Field."  
+4. Choose "User Stamp" as the field type.  
+5. In the " Update When" drop -down menu, select the option that aligns with your requirements:  
+o "New Record": This option automatically captures the user stamp of the individual creating 
+the record.  
+o "New Record and Field Updates": This option captures the user stamp of  the record creator 
+and updates based on the user who last modified any fields within the record, whether 
+through manual changes or actions.  
+6. After configuring the field options, click "Save and Close" to finalize the creation of the new User 
+Stamp field.  
+These steps empower you to effortlessly track user information associated with record creation, ensuring 
+transparency and accountability within your organization.  
+Now, if you prefer a more hands -on approach, Asset Panda allows you to manually add records, providing 
+flexibility in your data entry process. Here's a quick guide to manually adding one or multiple records:  
+1. Navigate to the Groups menu and select your desired group. For this example, we've chosen the 
+Assets group, but feel free to select any group  that suits your needs.  
+2. Click on "Add New" to initiate the manual record creation process.  
+3. Enter the relevant information for the record.  
+4. Click "Save," ensuring that all required fields (indicated by an asterisk (*)) are completed before the 
+system allows you to save.  
+These straightforward steps empower users to tailor their record -keeping process to their specific needs, 
+whether it involves automated user stamp tracking or hands -on manual record creation. Asset Panda ensures 
+a user -friendly experience, mak ing it a reliable ally in managing and tracking records efficiently.  
+Query - How to archive Records?  
+ 
+Now that we've delved into the topic of archiving extensively, let's demystify the process and explore how to 
+archive records in a few simple steps:  
+1. Begin  by navigating to the specific group where you wish to perform the archiving process. For our 
+example, we'll use the Assets group.  
+2. Once in the group, identify and select the records you intend to archive. This could involve choosing 
+multiple records to streamline the process.  
+3. Click on the ellipses icon (depicted as three dots) to reveal a dropdown menu, and then select 
+"Archive/Activate."  
+4. A subsequent option to "Archive" will appear. Click on it to initiate the archiving process.  
+At this point, a magical  prompt materializes, requesting the entry of the Depreciation/Inflation Stop Date. 
+It's here that you specify the date, providing a dynamic element to the archiving process.  
+4.1 Enter the desired date, and then proceed to click on "Archive."  Groups & Records  
+ 
+The process i s as simple as that —your selected records are now securely archived. It's worth marveling at 
+the ease and efficiency of this feature.  
+Query - How to Unarchive Records?  
+ 
+Fear not; we've got you covered with a straightforward guide on viewing archived record s: 
+1. Navigate back to the group where you stored your archived records. This ensures that you're in the 
+right context for accessing the archived data.  
+2. Locate and select the filter icon, often represented by a funnel or similar symbol.  
+3. From the dropdown menu,  choose the "Archived" option. This action will reveal a set of additional 
+choices, allowing you to decide whether to "Include archived" or "View only archived."  
+These steps grant you control over how you interact with your archived records, providing flex ibility in 
+terms of visibility. Whether you opt to include archived records in your regular view or exclusively focus on 
+the archived ones, Asset Panda empowers you to navigate and manage your data with unparalleled ease.  
+ 
+Query – How to remove records fro m Archive status?  
+ 
+Archiving records in Asset Panda doesn't mean they're consigned to an eternal archive. The Activate feature 
+provides a convenient means to reverse the archival process whenever needed. Here's how you can 
+effortlessly bring records back f rom the archive:  
+1. Begin by viewing your archived records, referring to the "View Archived Records" section for a 
+quick refresher on the steps involved.  
+2. Select the specific archived records you wish to activate, signalling their removal from archived 
+status.  
+3. Click on the ellipses icon (depicted as three dots) to unveil a dropdown menu, and then select 
+"Archive/Activate."  
+4. From the subsequent options, choose "Activate" to swiftly restore the selected records.  
+Just like that, your records are liberated from thei r archived status, thanks to the Activate feature. However, 
+if you prefer a more targeted approach for reactivating individual items, Asset Panda has you covered with 
+an alternative method:  
+1. Once again, navigate to your archived records and single out the s pecific record you wish to 
+reactivate.  
+2. Click on the ellipses icon located at the end of the record, then select "View."  
+3. In the viewing mode, click on the ellipses icon again, and this time, choose "Unarchive."  
+The record is now gracefully removed from its archived status, providing you with a flexible and efficient 
+approach to managing your data.  
+A parting note worth mentioning: if you choose to remove a record from archived status, then later decide to 
+archive it again, the system allows you to specify a n ew date to stop depreciation, overwriting the existing 
+stop date. This dynamic feature ensures that you maintain control and customization over the archival 
+process, adapting it to your evolving needs.  
+Query - How to hide Inactive Records?  Groups & Records  
+ 
+1. Start by clickin g on the settings icon, often represented by a gear or cogwheel, and then select 
+"Group Settings."  
+2. Within Group Settings, navigate to your People group, which may be labeled as your Employees 
+group or under a similar designation. Once in the People group, click on the "Status Field" link.  
+3. In the subsequent interface, locate the "Default for listing" column. Here, you'll find an option related 
+to the status display on the main listing page. To hide inactive employees, simply deselect the 
+checkbox correspondi ng to "Inactive."  
+The "Default for listing" concept signifies that a particular status is set to appear by default on the main 
+listing page. By deselecting the box for "Inactive," you customize the default display to exclude inactive 
+employees. It's important to note that even though the inactive status is no longer visible by default, you can 
+still access it by performing a Status Filter search on the Employees main listing page when needed.  
+This straightforward process allows you to tailor the main listing according to your preferences, 
+emphasizing active employees while efficiently managing the visibility of inactive ones. Asset Panda's user -
+friendly interface ensures that customization is both intuitive and flexible, enabling you to optimize the 
+display of employee status in line with your organizational needs.  
+Query - How to perform Reallocation?  
+ 
+The reallocation feature in Asset Panda empowers users to efficiently modify multiple records at once, 
+streamlining the process of updating information a cross selected assets. Here's a step -by-step guide on how 
+to utilize the reallocation feature:  
+1. Begin by navigating to your Assets page within Asset Panda. Here, you can see a comprehensive list 
+of your assets.  
+2. Select the checkbox next to the asset or assets that you intend to reallocate. This action signals your 
+choice for the upcoming reallocation process.  
+3. Locate the three vertical dots (ellipses) in the upper right corner of the page. Click on these dots to 
+reveal a dropdown menu, and then select "Re allocate."  
+4. In the reallocation interface, you'll have the option to select the fields you wish to modify. It's crucial 
+to note that you can choose more than one field; however, modifying multiple fields will result in the 
+change being applied to all select ed assets. Click "Continue" once you've made your selections.  
+5. Enter the values for the selected fields. The specific fields you choose to modify may vary based on 
+your organizational needs. Once you've entered the values, click "Continue" to proceed.  
+6. A not ification will appear, alerting you that changes are about to be made to your selected assets. 
+Confirm that the entered values and changes are accurate.  
+7. Finally, click "Update Records" to execute the reallocation. This step ensures that the selected assets  
+are updated with the new information.  
+Congratulations! Your selected assets are now successfully updated, thanks to the reallocation feature. This 
+efficient process allows for bulk modifications, saving time and ensuring consistency across multiple 
+record s. Asset Panda's user -friendly interface and reallocation functionality provide a powerful tool for 
+managing and updating asset information with ease.  
+Query - How to Replicate Records?  
+ 
+Replication in Asset Panda offers a convenient and swift method for du plicating records, enabling users to 
+efficiently create up to 25 copies with a single replication process. Here's a step -by-step guide on setting up 
+and executing record replication:  Groups & Records  
+ 
+1. Start by selecting the settings icon and then choose "Group Settings."  
+2. Within Group Settings, locate your Assets group, and click on the "Edit" link associated with that 
+group.  
+3. Identify the specific field you want to include in your replication and select "Edit" for that particular 
+field.  
+4. Scroll down to find the "Include in R eplication" option, and check the box to include the chosen field 
+in the replication process.  
+5. Click "Save and Close" to confirm the inclusion of the selected field in the replication setup.  
+6. Navigate to the record you wish to replicate. If you need assistan ce, refer to the "View a Record" 
+section for more information on how to access and view records.  
+7. Click on the ellipses icon situated at the top of your screen, then select "Replicate."  
+8. Choose either "Single" to replicate a single record, requiring you to p rovide a name and additional 
+information, or select "Multiple" to specify the number of times you want to replicate the record.  
+9. Deselect any fields you don't wish to include in the replication. This step ensures that only the 
+relevant information is duplic ated.  
+10. Enter the replicate information in the appropriate fields, and click "Save."  
+Following these steps, you will receive an email confirmation verifying the successful replication of your 
+records. Asset Panda's replication feature streamlines the process  of creating multiple records by copying 
+selected information, allowing users to focus on inputting unique values for each new record. This user -
+friendly functionality, coupled with the ability to customize field inclusion, makes record replication a 
+power ful tool for managing data efficiently within the Asset Panda platform.  
+Query - How to Search for Multiple Records?  
+ 
+Efficiently searching for multiple items in your Assets group within Asset Panda is a breeze with the 
+following step -by-step guide:  
+1. Start b y clicking to open your Assets group, and then locate the search bar positioned in the top -left 
+corner of your screen. You can access the search field by clicking on the magnifying glass icon . 
+2. To initiate a search for multiple items simultaneously, employ the pipe (|) character, typically located 
+above the Enter key on your keyboard. Begin by typing each asset you wish to search for, separating 
+each with the pipe character. Once you've listed all the assets, press Enter on your keyboard or click 
+the magnify ing glass icon in the search field to trigger the search.  
+It's essential to note a crucial limitation: you can only search for multiple assets using the same list field. For 
+instance, you can search for multiple asset IDs simultaneously, but attempting to search for a combination of 
+asset IDs and serial numbers concurrently is not supported. This restriction ensures clarity and precision in 
+your search results, allowing Asset Panda users to swiftly and effectively retrieve the information they need 
+within t heir Assets group. This search functionality enhances the user experience, making it easy to locate 
+and manage multiple assets seamlessly.  

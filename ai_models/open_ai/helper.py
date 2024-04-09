@@ -23,6 +23,16 @@ def process_query(file_name, query):
     Parameters:
         file_name (str): The name of the file containing text samples to be searched.
         query (str): The query to be processed and answered.
+(llm_model) dell@user-Inspiron-15-3511:~/Documents/new_webkorps_llm/new_webkorps_llm$ code .
+(llm_model) dell@user-Inspiron-15-3511:~/Documents/new_webkorps_llm/new_webkorps_llm$ python3 app.py
+Traceback (most recent call last):
+  File "/home/dell/Documents/new_webkorps_llm/new_webkorps_llm/app.py", line 31, in <module>
+    kb = BedrockKBAgent(setup=True)
+  File "/home/dell/Documents/new_webkorps_llm/new_webkorps_llm/ai_models/aws/helper.py", line 21, in __init__
+    self.setup()
+  File "/home/dell/Documents/new_webkorps_llm/new_webkorps_llm/ai_models/aws/helper.py", line 49, in setup
+    response_kb = kb.create_kb(kb_name="bedrock-ra-01",
+NameError: name 'kb' is not defined
 
     Returns:
         dict: A dictionary containing the processed result generated in response to the query.

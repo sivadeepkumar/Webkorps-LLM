@@ -38,9 +38,9 @@ settings.embed_model = embed_model
 index = VectorStoreIndex.from_documents(documents, service_context=settings)
 query_engine = index.as_query_engine()
 
-app = Blueprint('llama_openai_model', __name__)
+routes = Blueprint('llama_openai_model', __name__)
 
-@app.route('/query', methods=['POST'])
+@routes.route('/query', methods=['POST'])
 def query():
     """
     Processes a query using the LLAMA OpenAI model and returns a response.
@@ -70,7 +70,7 @@ def query():
         scores = [node.score for node in data['response'].source_nodes]
         print(scores)
         if scores[0] < 0.2:
-            return jsonify({"response":"Please request the query related to documents"})
+            return jsonify({"response":"Please request the query related to documents","data": response_str})
 
         return jsonify({"response": response_str})
     except Exception as e:

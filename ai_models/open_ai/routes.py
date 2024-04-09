@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify, g
-from .openai_service import *
+from .helper import *
 from dotenv import load_dotenv
 from flask_cors import CORS 
 import os
@@ -7,7 +7,7 @@ import logging
 from flask import Blueprint
 load_dotenv()
 
-app = Blueprint('open_ai_model', __name__)
+open_ai = Blueprint('open_ai_model', __name__)
 
 # Configure logging
 logging.basicConfig(filename='../../logs/open_ai_model.log', level=logging.INFO)
@@ -16,12 +16,12 @@ logger = logging.getLogger(__name__)
 
 OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 
-@app.route('/', methods=['GET'])
+@open_ai.route('/', methods=['GET'])
 def health_check():
     return 'OK', 200
 
 
-@app.route('/cryoport', methods=['POST'])
+@open_ai.route('/cryoport', methods=['POST'])
 def cryoport():
     """_Processes a query related to Cryoport information.
         This endpoint is designed to handle POST requests and processes queries regarding Cryoport. Upon receiving a valid JSON payload containing a 'query' field, the endpoint extracts the query and processes it to retrieve relevant information about Cryoport and its uses.
@@ -40,7 +40,7 @@ def cryoport():
         logger.exception("An error occurred in /cryoport endpoint."+str(e))
         return jsonify({'Error': 'Internal Server Error'}), 500
 
-@app.route('/realEstateQuery', methods=['POST'])
+@open_ai.route('/realEstateQuery', methods=['POST'])
 def realEstateQuery():
     """
     Processes queries related to real estate information.
@@ -60,7 +60,7 @@ def realEstateQuery():
         logger.exception("An error occurred in /realEstateQuery endpoint.")
         return jsonify({'error': 'Internal Server Error'}), 500
 
-@app.route('/query', methods=['POST'])
+@open_ai.route('/query', methods=['POST'])
 def assetpanda():
     """
     Processes queries related to AssetPanda information.
@@ -80,7 +80,7 @@ def assetpanda():
         logger.exception("An error occurred in /query (ASSETPANDA) endpoint.")
         return jsonify({'error': 'Internal Server Error'}), 500
 
-@app.route('/webkorps_query', methods=['POST'])
+@open_ai.route('/webkorps_query', methods=['POST'])
 def webkorps_query():
     """
     Processes queries related to Webkorps information.
@@ -101,7 +101,7 @@ def webkorps_query():
         return jsonify({'error': 'Internal Server Error'}), 500
 
 
-@app.route('/summary', methods=['POST'])
+@open_ai.route('/summary', methods=['POST'])
 def summary():
     """
     Generates a summary based on the input query and source.
@@ -113,6 +113,15 @@ def summary():
 
     data = request.get_json()
     query = data['query']
+    
+    # Fine-tuning rule to ensure all columns are included
+    finetune_rule = """
+    rule: Ensure all relevant columns are included in the response
+    """
+
+    # Append the fine-tuning rule to the query
+    query = finetune_rule + "\n\n" + query
+
     source = data['source']
 
 

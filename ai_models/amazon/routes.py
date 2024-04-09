@@ -1,16 +1,16 @@
 import boto3
 from flask import Flask, render_template, request,jsonify
 from flask import Blueprint
-from .bedrock_kb_agent import BedrockKBAgent
+from .helper import BedrockKBAgent
+import os 
 
-app = Flask(__name__)
-app = Blueprint('amazon_model', __name__)
+# aws_ai = Flask(__name__)
+aws_ai = Blueprint('amazon_model', __name__)
 kb = BedrockKBAgent()
 client = boto3.client('comprehend', region_name='us-east-1')
 
 
-
-@app.route('/bedrock', methods=['POST'])
+@aws_ai.route('/bedrock', methods=['POST'])
 def bedrock_tech():
     """
         Handles queries related to a specific knowledge base using BedrockKBAgent.
@@ -29,12 +29,12 @@ def bedrock_tech():
 
     data = request.get_json()
     query = data.get('query')
-    kb_id = "QRJWFQFERS"
+    kb_id = os.getenv("kb_id")  #  or "QRJWFQFERS"
     response = kb.retrieve_from_kb(kb_id, query)
     return response['retrievalResults'] # [0]['content']
 
 
-@app.route('/sample', methods=['POST'])
+@aws_ai.route('/sample', methods=['POST'])
 def query_model():
     """
         Queries a knowledge base using Amazon Comprehend and returns the response.

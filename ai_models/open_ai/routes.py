@@ -112,15 +112,16 @@ def summary():
     """
 
     data = request.get_json()
-    query = data['query']
+    query = data['query'].lower().replace("form","")
     
     # Fine-tuning rule to ensure all columns are included
-    finetune_rule = """
-    rule: Ensure all relevant columns are included in the response
+    prompt_engineering = """
+    NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
+    Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
     """
 
     # Append the fine-tuning rule to the query
-    query = finetune_rule + "\n\n" + query
+    query = query +"\n\n" + prompt_engineering
 
     source = data['source']
 

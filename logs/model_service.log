@@ -208,3 +208,27 @@ Traceback (most recent call last):
 TypeError: expected string or buffer
 INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:26:55] "[35m[1mPOST /open_ai_model/summary HTTP/1.1[0m" 500 -
 INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:27:50] "[31m[1mPOST /open_ai_model/summary HTTP/1.1[0m" 400 -
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:faiss.loader:Loading faiss with AVX512 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:31:52] "POST /open_ai_model/summary HTTP/1.1" 200 -
+INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
+INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:6000
+INFO:werkzeug:[33mPress CTRL+C to quit[0m
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:faiss.loader:Loading faiss with AVX512 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:34:06] "POST /open_ai_model/summary HTTP/1.1" 200 -

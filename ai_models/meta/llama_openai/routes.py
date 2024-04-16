@@ -40,7 +40,7 @@ query_engine = index.as_query_engine()
 
 routes = Blueprint('llama_openai_model', __name__)
 
-@routes.route('/query', methods=['POST'])
+@routes.route('/text-generation', methods=['POST'])
 def query():
     """
     Processes a query using the LLAMA OpenAI model and returns a response.

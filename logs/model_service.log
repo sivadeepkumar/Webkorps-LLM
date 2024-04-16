@@ -1,15 +1,11 @@
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:03:33] "[33mPOST /open_ai_model/cryoport/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 02:25:27] "[33mPOST /open_ai_model/realEstate HTTP/1.1[0m" 404 -
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:faiss.loader:Loading faiss with AVX512 support.
 INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:05:04] "POST /open_ai_model/cryoport HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:05:19] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 02:25:52] "POST /open_ai_model/realEstateQuery HTTP/1.1" 200 -
+INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
@@ -20,215 +16,17 @@ INFO:faiss.loader:Loading faiss with AVX512 support.
 INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
 INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:10:40] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:26:39] "POST /open_ai_model/cryoport HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:29:03] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:6000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:12:40] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:13:08] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:15:49] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:16:24] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:16:35] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:19:21] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:19:38] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:19:53] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:26:02] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:26:23] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:28:24] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:31:10] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:33:14] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:38:36] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:40:39] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 10:40:59] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:19:22] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:25:31] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:26:32] "POST /open_ai_model/summary HTTP/1.1" 200 -
-ERROR:app:Exception on /open_ai_model/summary [POST]
-Traceback (most recent call last):
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/flask/app.py", line 1473, in wsgi_app
-    response = self.full_dispatch_request()
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/flask/app.py", line 882, in full_dispatch_request
-    rv = self.handle_user_exception(e)
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/flask_cors/extension.py", line 176, in wrapped_function
-    return cors_after_request(app.make_response(f(*args, **kwargs)))
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/flask/app.py", line 880, in full_dispatch_request
-    rv = self.dispatch_request()
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/flask/app.py", line 865, in dispatch_request
-    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
-  File "/home/dell/Documents/Webkorps-LLM/ai_models/open_ai/routes.py", line 130, in summary
-    document_search = FAISS.from_texts([source], embeddings)
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/langchain_community/vectorstores/faiss.py", line 930, in from_texts
-    embeddings = embedding.embed_documents(texts)
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 517, in embed_documents
-    return self._get_len_safe_embeddings(texts, engine=engine)
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/langchain_openai/embeddings/base.py", line 310, in _get_len_safe_embeddings
-    token = encoding.encode(
-  File "/home/dell/Documents/Webkorps-LLM/env_rag/lib/python3.9/site-packages/tiktoken/core.py", line 116, in encode
-    if match := _special_token_regex(disallowed_special).search(text):
-TypeError: expected string or buffer
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:26:55] "[35m[1mPOST /open_ai_model/summary HTTP/1.1[0m" 500 -
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:27:50] "[31m[1mPOST /open_ai_model/summary HTTP/1.1[0m" 400 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:31:52] "POST /open_ai_model/summary HTTP/1.1" 200 -
-INFO:botocore.credentials:Found credentials in shared credentials file: ~/.aws/credentials
-INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
-INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
-INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
- * Running on http://127.0.0.1:6000
-INFO:werkzeug:[33mPress CTRL+C to quit[0m
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:faiss.loader:Loading faiss with AVX512 support.
-INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
-INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
-INFO:werkzeug:127.0.0.1 - - [15/Apr/2024 18:34:06] "POST /open_ai_model/summary HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:30:29] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:31:05] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:31:37] "[33mPOST /open_ai_model/llama_openai/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:32:11] "[33mPOST /llama_openai/text-generation HTTP/1.1[0m" 404 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:33:01] "POST /meta/llama_openai/text-generation HTTP/1.1" 200 -

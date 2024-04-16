@@ -1,6 +1,5 @@
-/ai_models/meta/llama_2/llama-2-7b-chat.ggmlv3.q8_0.bin
-/.env
-/env_llm
+/ai_models/meta/llama_2/models/llama-2-7b-chat.ggmlv3.q8_0.bin
+/.env 
 /llama2_env
 /ai_models/open_source/mistral/gpt4all/gpt4all-api/gpt4all_api/models/mistral-7b-instruct-v0.1.Q4_0.gguf
-/env_rag
+/env_llm

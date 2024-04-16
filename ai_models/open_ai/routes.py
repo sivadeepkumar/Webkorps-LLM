@@ -21,7 +21,7 @@ def health_check():
     return 'OK', 200
 
 
-@open_ai.route('/cryoport', methods=['POST'])
+@open_ai.route('/cryoport/text-generation', methods=['POST'])
 def cryoport():
     """_Processes a query related to Cryoport information.
         This endpoint is designed to handle POST requests and processes queries regarding Cryoport. Upon receiving a valid JSON payload containing a 'query' field, the endpoint extracts the query and processes it to retrieve relevant information about Cryoport and its uses.
@@ -40,7 +40,7 @@ def cryoport():
         logger.exception("An error occurred in /cryoport endpoint."+str(e))
         return jsonify({'Error': 'Internal Server Error'}), 500
 
-@open_ai.route('/realEstateQuery', methods=['POST'])
+@open_ai.route('/real-estate/text-generation', methods=['POST'])
 def realEstateQuery():
     """
     Processes queries related to real estate information.
@@ -60,7 +60,7 @@ def realEstateQuery():
         logger.exception("An error occurred in /realEstateQuery endpoint.")
         return jsonify({'error': 'Internal Server Error'}), 500
 
-@open_ai.route('/query', methods=['POST'])
+@open_ai.route('/assetpanda/text-generation', methods=['POST'])
 def assetpanda():
     """
     Processes queries related to AssetPanda information.
@@ -80,7 +80,7 @@ def assetpanda():
         logger.exception("An error occurred in /query (ASSETPANDA) endpoint.")
         return jsonify({'error': 'Internal Server Error'}), 500
 
-@open_ai.route('/webkorps_query', methods=['POST'])
+@open_ai.route('/webkorps/text-generation', methods=['POST'])
 def webkorps_query():
     """
     Processes queries related to Webkorps information.
@@ -101,7 +101,7 @@ def webkorps_query():
         return jsonify({'error': 'Internal Server Error'}), 500
 
 
-@open_ai.route('/summary', methods=['POST'])
+@open_ai.route('/summary/text-generation', methods=['POST'])
 def summary():
     """
     Generates a summary based on the input query and source.

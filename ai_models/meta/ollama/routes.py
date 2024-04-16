@@ -41,7 +41,7 @@ retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
 # routes = Blueprint('llama_openai_model', __name__)
 
-@app.route('/answer_question', methods=['POST'])
+@app.route('/ollama_llama2', methods=['POST'])
 def answer_question():
     query = request.json['query']
     response = retrieval_chain.invoke({"input": query})

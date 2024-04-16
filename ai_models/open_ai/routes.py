@@ -101,7 +101,7 @@ def webkorps_query():
         return jsonify({'error': 'Internal Server Error'}), 500
 
 
-@open_ai.route('/summary/text-generation', methods=['POST'])
+@open_ai.route('/summary', methods=['POST'])
 def summary():
     """
     Generates a summary based on the input query and source.
@@ -134,3 +134,40 @@ def summary():
     result = chain.run(input_documents=docs, question=query)
 
     return jsonify(result)
+
+
+
+@open_ai.route('/forms', methods=['POST'])
+def forms():
+    """
+    Generates a summary based on the input query and source.
+    This function handles POST requests containing a JSON payload with 'query' and 'source' fields. It generates a summary by searching for relevant documents related to the provided source and answering the query using an AI-powered QA model. 
+    The result is returned in JSON format.
+    Returns:
+        JSON: Summary generated based on the input query and source.
+    """
+    # Input query
+    data = request.get_json()
+    query = data['query'].lower().replace("form","")
+    
+    # Fine-tuning rule to ensure all columns are included
+    prompt_engineering = """
+    NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
+    Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
+    """
+
+    # Append the fine-tuning rule to the query
+    query = query +"\n\n" + prompt_engineering
+
+    source = data['source']
+
+
+    embeddings = OpenAIEmbeddings()  
+    document_search = FAISS.from_texts([source], embeddings)
+    chain = load_qa_chain(OpenAI(), chain_type="stuff")
+
+    docs = document_search.similarity_search(query)
+    result = chain.run(input_documents=docs, question=query)
+
+    return jsonify(result)
+    

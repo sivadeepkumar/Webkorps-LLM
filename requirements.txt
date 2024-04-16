@@ -38,3 +38,21 @@ ctransformers==0.2.27
 # # Gradient model
 # llama_index.embeddings.gradient
 llama-index-embeddings-gradient==0.1.2
+
+
+#gpt4all
+accelerate
+datasets
+einops
+torchmetrics
+evaluate
+transformers>=4.28.0
+wandb
+peft
+nodelist-inflator
+deepspeed
+sentencepiece
+jsonlines
+nomic
+scikit-learn
+matplotlib

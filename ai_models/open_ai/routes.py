@@ -98,10 +98,18 @@ def assetpanda():
         query = data['query']
         processed_data = process_query('assetpanda.txt', query)
 
-        return jsonify(processed_data)
+        success_message = {
+                                "status": "Success",
+                                "Response": processed_data
+                        }
+        return jsonify(success_message)
+                
     except Exception as e:
-        logger.exception("An error occurred in /query (ASSETPANDA) endpoint.")
-        return jsonify({'error': 'Internal Server Error'}), 500
+        failure_response = {
+        "status": "Failure",
+        "Response": e
+        }
+        return jsonify(failure_response)
 
 
 
@@ -127,7 +135,7 @@ def summary():
                 
     except Exception as e:
         failure_response = {
-        "status": "Faluire",
+        "status": "Failure",
         "Response": e
         }
         return jsonify(failure_response)
@@ -190,7 +198,7 @@ def forms():
                 
     except Exception as e:
         failure_response = {
-        "status": "Faluire",
+        "status": "Failure",
         "Response": e
         }
         return jsonify(failure_response)

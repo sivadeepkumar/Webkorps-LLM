@@ -23,7 +23,7 @@ def health_check():
     return 'OK', 200
 
 if __name__ == '__main__':
-    ai_app.run(port= 6000)
+    ai_app.run(port= 5000)
 
 
 

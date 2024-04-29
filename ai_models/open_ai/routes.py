@@ -60,25 +60,7 @@ def realEstateQuery():
         logger.exception("An error occurred in /realEstateQuery endpoint.")
         return jsonify({'error': 'Internal Server Error'}), 500
 
-@open_ai.route('/assetpanda/text-generation', methods=['POST'])
-def assetpanda():
-    """
-    Processes queries related to AssetPanda information.
-    This function handles POST requests containing a JSON payload with a 'query' field. It processes the query using the provided 'assetpanda.txt' data file, which includes information about adding a record, viewing a record, and tracking a record in AssetPanda. 
-    The processed data is returned in JSON format.
-    Returns:
-        JSON: Processed data related to the query about AssetPanda.
-    """
 
-    try:
-        data = request.get_json()
-        query = data['query']
-        processed_data = process_query('assetpanda.txt', query)
-
-        return jsonify(processed_data)
-    except Exception as e:
-        logger.exception("An error occurred in /query (ASSETPANDA) endpoint.")
-        return jsonify({'error': 'Internal Server Error'}), 500
 
 @open_ai.route('/webkorps/text-generation', methods=['POST'])
 def webkorps_query():
@@ -101,43 +83,67 @@ def webkorps_query():
         return jsonify({'error': 'Internal Server Error'}), 500
 
 
-@open_ai.route('/summary', methods=['POST'])
-def summary():
+@open_ai.route('/openai_response', methods=['POST'])
+def assetpanda():
     """
-    Generates a summary based on the input query and source.
-    This function handles POST requests containing a JSON payload with 'query' and 'source' fields. It generates a summary by searching for relevant documents related to the provided source and answering the query using an AI-powered QA model. 
-    The result is returned in JSON format.
+    Processes queries related to AssetPanda information.
+    This function handles POST requests containing a JSON payload with a 'query' field. It processes the query using the provided 'assetpanda.txt' data file, which includes information about adding a record, viewing a record, and tracking a record in AssetPanda. 
+    The processed data is returned in JSON format.
     Returns:
-        JSON: Summary generated based on the input query and source.
-    """
-    # Input query
-    data = request.get_json()
-    query = data['query'].lower().replace("form","")
-    
-    # Fine-tuning rule to ensure all columns are included
-    prompt_engineering = """
-    NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
-    Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
+        JSON: Processed data related to the query about AssetPanda.
     """
 
-    # Append the fine-tuning rule to the query
-    query = query +"\n\n" + prompt_engineering
+    try:
+        data = request.get_json()
+        query = data['query']
+        processed_data = process_query('assetpanda.txt', query)
 
-    source = data['source']
+        return jsonify(processed_data)
+    except Exception as e:
+        logger.exception("An error occurred in /query (ASSETPANDA) endpoint.")
+        return jsonify({'error': 'Internal Server Error'}), 500
 
 
-    embeddings = OpenAIEmbeddings()  
+
+@open_ai.route('/openai/source', methods=['POST'])
+def summary():
+    try:
+        data = request.get_json()
+        query = data['query']
+        source = data['source']
+
+
+        embeddings = OpenAIEmbeddings()  
+        document_search = FAISS.from_texts([source], embeddings)
+        chain = load_qa_chain(OpenAI(), chain_type="stuff")
+
+        docs = document_search.similarity_search(query)
+        result = chain.run(input_documents=docs, question=query)
+        success_message = {
+                                "status": "Success",
+                                "Response": result
+                        }
+        return jsonify(success_message)
+                
+    except Exception as e:
+        failure_response = {
+        "status": "Faluire",
+        "Response": e
+        }
+        return jsonify(failure_response)
+
+
+def get_embedding(source,embeddings):
+    query = "Which form we need to create just one word answer like <Create the ________ form> in this format,I need to get the response"
     document_search = FAISS.from_texts([source], embeddings)
     chain = load_qa_chain(OpenAI(), chain_type="stuff")
-
     docs = document_search.similarity_search(query)
     result = chain.run(input_documents=docs, question=query)
+    cleaned_string = result.replace('\n', '')
 
-    return jsonify(result)
+    return cleaned_string
 
-
-
-@open_ai.route('/forms', methods=['POST'])
+@open_ai.route('/openai/form', methods=['POST'])
 def forms():
     """
     Generates a summary based on the input query and source.
@@ -147,27 +153,45 @@ def forms():
         JSON: Summary generated based on the input query and source.
     """
     # Input query
-    data = request.get_json()
-    query = data['query'].lower().replace("form","")
-    
-    # Fine-tuning rule to ensure all columns are included
-    prompt_engineering = """
-    NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
-    Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
-    """
+    # import pdb ; pdb.set_trace()
+    try:
+        embeddings = OpenAIEmbeddings()
+        data = request.get_json()
+        query = data["query"]
+        source = data['source']
+        # print(query)
+        # Method_2 
+        
+        query_words = get_embedding(query,embeddings)
+        print(query_words)  
+        query_sub = f"provide me the relevant columns only for {query_words} would be"
+        # query_sub = f"provide me the relevant columns name in array only for {query} would be."
+        # Fine-tuning rule to ensure all columns are included
+        prompt_engineering = """
+        NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
+        Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
+        """
+        # pdb.set_trace()
+        # Append the fine-tuning rule to the query
+        query = query_sub +"\n\n" + prompt_engineering
+        # query = f"Create the {query_words} form"
+        document_search = FAISS.from_texts([source], embeddings)
+        chain = load_qa_chain(OpenAI(), chain_type="stuff")
 
-    # Append the fine-tuning rule to the query
-    query = query +"\n\n" + prompt_engineering
-
-    source = data['source']
+        docs = document_search.similarity_search(query)
+        result = chain.run(input_documents=docs, question=query)
 
 
-    embeddings = OpenAIEmbeddings()  
-    document_search = FAISS.from_texts([source], embeddings)
-    chain = load_qa_chain(OpenAI(), chain_type="stuff")
+        success_message = {
+                                "status": "Success",
+                                "Response": result
+                        }
+        return jsonify(success_message)
+                
+    except Exception as e:
+        failure_response = {
+        "status": "Faluire",
+        "Response": e
+        }
+        return jsonify(failure_response)
 
-    docs = document_search.similarity_search(query)
-    result = chain.run(input_documents=docs, question=query)
-
-    return jsonify(result)
-    

@@ -22,3 +22,16 @@ services:
     command: ["/start-reload.sh"]
     stdin_open: true # für pdb
     tty: true # für pdb
+
+
+  
+#     version: '3'  # Use a supported version, like '2' or '3'
+
+# services:
+#   gpt4all_api:
+#     image: gpt4all_api
+#     ports:
+#       - "80:80"
+#     environment:
+#       - MODEL_BIN=/path/to/model.bin  # Example environment variable
+#     # Add other configuration as needed

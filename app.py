@@ -24,3 +24,6 @@ def health_check():
 
 if __name__ == '__main__':
     ai_app.run(port= 6000)
+
+
+

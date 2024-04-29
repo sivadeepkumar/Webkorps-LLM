@@ -154,7 +154,7 @@ class BedrockKBAgent():
             },
             retrievalConfiguration={
                 'vectorSearchConfiguration': {
-                    'numberOfResults': 4
+                    'numberOfResults': 1
                 }
             },
             nextToken='records'

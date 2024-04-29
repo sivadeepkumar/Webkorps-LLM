@@ -12,6 +12,7 @@ MODEL_BIN = "gpt4all-falcon-newbpe-q4_0"
 Next step:
 Navigate to the settings file (gpt4all-api/gpt4all_api/app/api_v1/settings.py) and ensure the following settings are added or modified:
 
+
 class Settings(BaseSettings):
     app_environment = 'dev'
     model: str = 'gpt4all-falcon-newbpe-q4_0'
@@ -24,7 +25,7 @@ class Settings(BaseSettings):
     top_k: int = 50
     repeat_penalty: float = 1.18
 
-To Running the Project we need Docker Setup
+To Running the Project we need make Docker Setup
 
 Ensure Docker is installed on your machine.
 

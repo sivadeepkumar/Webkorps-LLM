@@ -1,0 +1,7 @@
+● docker.service - Docker Application Container Engine
+     Loaded: loaded (/lib/systemd/system/docker.service; enabled; vendor preset: enabled)
+     Active: activating (auto-restart) (Result: exit-code) since Fri 2024-04-19 22:10:40 IST; 1s ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: https://docs.docker.com
+    Process: 23400 ExecStart=/usr/bin/dockerd -H unix:///var/run/docker.sock ... [0;1;31m(code=exited, status=1/FAILURE)[0m
+   Main PID: 23400 (code=exited, status=1/FAILURE)

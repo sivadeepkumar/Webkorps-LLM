@@ -167,27 +167,28 @@ def forms():
         data = request.get_json()
         query = data["query"]
         source = data['source']
-        # print(query)
-        # Method_2 
-        
+        type = data['type']
+
         query_words = get_embedding(query,embeddings)
-        print(query_words)  
-        query_sub = f"provide me the relevant columns only for {query_words} would be"
+        print(query_words) 
+
+        if type == "create":
+            query_sub = f"provide me the relevant columns only for {query_words} would be"
+
+        else:
+            target_word = query_words.replace("form", "")
+            query_sub = f"provide me the relevant columns name in array only for updating {target_word} would be."
+
         # query_sub = f"provide me the relevant columns name in array only for {query} would be."
         # Fine-tuning rule to ensure all columns are included
-        prompt_engineering = """
-        NOTE: Neverever try to return all the fields or columns always go with minimal fields related to it.Please try to follow this note.
-        Example : I have n number of fields.assume in that 10 for medical. If i ask i need to create medical list then you need to provide me that 10 fields only.That easy it is.
-        """
-        # pdb.set_trace()
-        # Append the fine-tuning rule to the query
-        query = query_sub +"\n\n" + prompt_engineering
+        
+        
         # query = f"Create the {query_words} form"
         document_search = FAISS.from_texts([source], embeddings)
         chain = load_qa_chain(OpenAI(), chain_type="stuff")
 
         docs = document_search.similarity_search(query)
-        result = chain.run(input_documents=docs, question=query)
+        result = chain.run(input_documents=docs, question=query_sub)
 
 
         success_message = {

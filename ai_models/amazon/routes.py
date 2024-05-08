@@ -84,19 +84,44 @@ def health_check():
 
 # manual_ingestion
 def manual_vector_store(docs):
-    # Assuming bedrock_embeddings is defined somewhere
+    """
+    Manually creates a vector store from the provided documents using FAISS.
+
+    Args:
+    - docs (list): List of documents for which vectors need to be created.
+
+    Returns:
+    - None
+    """
+
     vectorstore_faiss = FAISS.from_documents(docs, bedrock_embeddings)
     vectorstore_faiss.save_local("sample_data/manual_index")
     
 
 
 def manual_ingestion(source):
+    """
+    Performs manual ingestion of a single source for text processing.
+
+    Args:
+    - source (str): The source text to be processed.
+
+    Returns:
+    - list: List of processed documents.
+    """
+
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
     docs = text_splitter.create_documents([source])
     return docs
 
 # Data ingestion function
 def data_ingestion():
+    """
+    Loads documents from PDF samples directory and performs text splitting.
+
+    Returns:
+    - list: List of split documents.
+    """
     
     # pdf_path = '../../sample_data/pdf_samples'
     loader = PyPDFDirectoryLoader("sample_data/pdf_samples")
@@ -109,15 +134,36 @@ def data_ingestion():
 
 # Vector embedding and vector store function
 def get_vector_store(docs):
+    """
+    Creates a vector store from the provided documents using FAISS.
+
+    Args:
+    - docs (list): List of documents for which vectors need to be created.
+
+    Returns:
+    - None
+    """
     vectorstore_faiss = FAISS.from_documents(docs, bedrock_embeddings)
     vectorstore_faiss.save_local("sample_data/faiss_index")
 
 # LLM models functions
 def get_mistral_llm():
+    """
+    Retrieves the Mistral LLM model from Amazon Bedrock.
+
+    Returns:
+    - Bedrock: Mistral LLM model instance.
+    """
     llm = Bedrock(model_id="mistral.mistral-7b-instruct-v0:2", client=bedrock, model_kwargs={'max_tokens': 1024})
     return llm
 
-def get_llama2_llm():
+def get_llama3_llm():
+    """
+    Retrieves the Llama2 LLM model from Amazon Bedrock.
+
+    Returns:
+    - Bedrock: Llama2 LLM model instance.
+    """
     return Bedrock(
         model_id="meta.llama3-70b-instruct-v1:0",
         client=bedrock,
@@ -133,6 +179,17 @@ PROMPT = PromptTemplate(template=prompt_template, input_variables=["context", "q
 
 # Function to get response from LLM model
 def get_response_llm(llm, vectorstore_faiss, query):
+    """
+    Retrieves a response from the LLM model using the specified query and vector store.
+
+    Args:
+    - llm (Bedrock): LLM model instance.
+    - vectorstore_faiss (FAISS): Vector store created from documents.
+    - query (str): User query to be processed.
+
+    Returns:
+    - str: Processed response from the LLM model.
+    """
     qa = RetrievalQA.from_chain_type(llm=llm, chain_type="stuff",
                                      retriever=vectorstore_faiss.as_retriever(search_type="similarity", search_kwargs={"k": 3}),
                                      return_source_documents=True, chain_type_kwargs={"prompt": PROMPT})
@@ -146,6 +203,12 @@ def get_response_llm(llm, vectorstore_faiss, query):
 # Route for updating vector base using GET request
 @aws_ai.route('/update_vector_base', methods=['GET'])
 def update_vector_base():
+    """
+    Updates the vector base using a GET request.
+
+    Returns:
+    - str: Success message if the vector base is updated successfully.
+    """
     docs = data_ingestion()
     get_vector_store(docs)
     return 'Vectors Updated Successfully'
@@ -153,6 +216,12 @@ def update_vector_base():
 # Route for Mistral model response using POST request
 @aws_ai.route('/mistral_response', methods=['POST'])
 def mistral_response():
+    """
+    Handles POST requests for Mistral model responses.
+
+    Returns:
+    - JSON: Response message containing status and processed data.
+    """
     try:
         user_question = request.json['query']
         faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
@@ -173,11 +242,17 @@ def mistral_response():
 
 # Route for Llama2 model response using POST request
 @aws_ai.route('/llama_response', methods=['POST'])
-def llama2_response():
+def llama3_response():
+    """
+    Handles POST requests for Llama2 model responses.
+
+    Returns:
+    - JSON: Response message containing status and processed data.
+    """
     try:
         user_question = request.json['query']
         faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-        llm = get_llama2_llm()
+        llm = get_llama3_llm()
         response = get_response_llm(llm, faiss_index, user_question)
         success_message = {
                                 "status": "Success",
@@ -196,6 +271,11 @@ def llama2_response():
 
 @aws_ai.route('/llama/source', methods=['POST'])
 def llama_source():
+    """
+    Endpoint for querying data using Llama3 LLM.
+
+    Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
+    """
     try:
         data = request.get_json()
         query = data['query']
@@ -205,7 +285,7 @@ def llama_source():
         embeddings = bedrock_embeddings
 
         # Load LLM from Amazon Bedrock (replace 'get_llm' with the actual function for loading Amazon Bedrock LLM)
-        llm = get_llama2_llm()
+        llm = get_llama3_llm()
 
         # Create FAISS index from source data
         document_search = FAISS.from_texts([source], embeddings)
@@ -231,6 +311,11 @@ def llama_source():
 
 @aws_ai.route('/mistral/source', methods=['POST'])
 def mistral_source():
+    """
+    Endpoint for querying data using Mistral LLM.
+
+    Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
+    """ 
     try:
         data = request.get_json()
         query = data['query']
@@ -265,40 +350,48 @@ def mistral_source():
         return jsonify(failure_response)
 
 def get_first_embedding(source_data):
-    try:
-        user_question = "Which form we need to create just one word answer like <Create the ________ form> in this format,I need to get the response"
-        docs = manual_ingestion(source_data)
-        manual_vector_store(docs)
-        faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-        llm = get_mistral_llm()
-        response = get_response_llm(llm, faiss_index, user_question)
+    """
+    Processes source data to obtain the first embedding for a question.
+
+    This function prepares the source data, creates a FAISS index, and retrieves the first embedding for a user question.
+    """
+    
+    user_question = "Which form we need to create just one word answer like <Create the ________ form> in this format,I need to get the response"
+    docs = manual_ingestion(source_data)
+    manual_vector_store(docs)
+    faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
+    llm = get_mistral_llm()
+    return get_response_llm(llm, faiss_index, user_question)
+
         
-        success_message = {
-                    "status": "Success",
-                    "Response": response
-                }
-        return jsonify(success_message)
-        
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": e
-        }
-        return jsonify(failure_response)
 
 @aws_ai.route('/mistral/form', methods=['POST'])
 def mistral_form():
+    """
+    Endpoint for generating form-related information using Llama3 LLM.
+
+    Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
+    """
     try:
         user_question = request.json['query']
         source_data = request.json['source']
+        type = request.json['type']
+
 
         query = get_first_embedding(user_question)
-
         print(query)
-        user_question = f"provide me the relevant columns name in array only for {query} would be."
+        
         docs = manual_ingestion(source_data)
         manual_vector_store(docs)
 
+
+        if type == "create":
+            user_question = f"provide me the relevant columns name in array only for {query} would be."
+        else:
+            target_word = query.replace("form", "")
+            user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
+
+        
         
         # FROM STORED DATA IT WILL RETRIEVE 
         faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
@@ -306,6 +399,8 @@ def mistral_form():
         # Assuming these functions are defined elsewhere
         llm = get_mistral_llm()
         response = get_response_llm(llm, faiss_index, user_question)
+
+
         success_message = {
                 "status": "Success",
                 "Response": response
@@ -323,23 +418,40 @@ def mistral_form():
 
 @aws_ai.route('/llama/form', methods=['POST'])
 def llama_form():
+    """
+    Endpoint for generating form-related information using Llama3 LLM.
+
+    Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
+    """
     try:
         user_question = request.json['query']
         source_data = request.json['source']
+        type = request.json['type']
+
 
         query = get_first_embedding(user_question)
         print(query)
-        user_question = f"provide me the relevant columns name in array only for {query} would be."
+        
         docs = manual_ingestion(source_data)
         manual_vector_store(docs)
 
+
+        if type == "create":
+            user_question = f"provide me the relevant columns name in array only for {query} would be."
+        else:
+            target_word = query.replace("form", "")
+            user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
+
+        
         
         # FROM STORED DATA IT WILL RETRIEVE 
         faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
 
         # Assuming these functions are defined elsewhere
-        llm = get_llama2_llm()
+        llm = get_llama3_llm()
         response = get_response_llm(llm, faiss_index, user_question)
+
+
         success_message = {
                 "status": "Success",
                 "Response": response

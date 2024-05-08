@@ -69,7 +69,7 @@ def generate_response():
         #   How to get the response here in string format
         return jsonify({"response": response_str})
     except Exception as e:
-        logging.error(f"An error occurred: {e}")
+        # logging.error(f"An error occurred: {e}")
         return jsonify({"error": "An error occurred"}), 500
 
 

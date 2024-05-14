@@ -1,0 +1,10 @@
+﻿Finding the word ______ form ? 
+
+Which form we need to create just one word answer like <Create the ________ form> in this format,I need to get the response
+
+
+Creation query : 
+provide me the relevant columns only for {query_words} would be
+
+Updation query : 
+provide me the relevant columns name in array only for updating {target_word} would be.

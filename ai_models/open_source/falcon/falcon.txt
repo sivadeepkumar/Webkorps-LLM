@@ -1,0 +1,70 @@
+GPT4All Falcon Model - API Setup
+This repository contains the necessary files and instructions to run the Mistral model using the GPT4All API.
+
+Setup
+Download the Falcon model from GPT4All (Using --> https://gpt4all.io/index.html). The model file you need is gpt4all-falcon-newbpe-q4_0.gguf.
+
+Place the downloaded model file (gpt4all-falcon-newbpe-q4_0.gguf) in the following path within your project repository: gpt4all-api/gpt4all_api/models.
+
+Update the .env file in your project repository and add the following line:
+MODEL_BIN = "gpt4all-falcon-newbpe-q4_0"
+
+Next step:
+Navigate to the settings file (gpt4all-api/gpt4all_api/app/api_v1/settings.py) and ensure the following settings are added or modified:
+
+
+class Settings(BaseSettings):
+    app_environment = 'dev'
+    model: str = 'gpt4all-falcon-newbpe-q4_0'
+    gpt4all_path: str = '/models'
+    inference_mode: str = "cpu"
+    hf_inference_server_host: str = "http://gpt4all_gpu:80/generate"  # Change if using GPU
+    sentry_dns: str = None
+    temp: float = 0.18
+    top_p: float = 1.0
+    top_k: int = 50
+    repeat_penalty: float = 1.18
+
+To Running the Project we need make Docker Setup
+
+Ensure Docker is installed on your machine.
+
+Change your working directory to gpt4all/gpt4all-api.
+
+Build the FastAPI docker image (only required on initial build or when dependencies change):
+
+DOCKER_BUILDKIT=1 docker build -t gpt4all_api --progress plain -f gpt4all_api/Dockerfile.buildkit .
+
+Starting the Backend:-
+To start the backend (API and locally hosted GPU inference server), run:
+docker compose up --build
+
+If you want to run the API without the GPU inference server, use:
+docker compose up --build gpt4all_api
+
+For running the API with the GPU inference server, edit the .env file with necessary environment variables and run:
+docker compose --env-file .env up --build
+
+Development and Testing
+To run the API in development mode with hot-reloading:
+docker compose up --build
+
+Edit files in the app directory as needed. The API will hot-reload on changes. Run unit tests with:
+
+Accessing API Documentation
+Once the FastAPI app is running, access its documentation and test the endpoints by visiting: localhost:80/docs
+
+
+"""
+Send a completion request to a GPT4All API endpoint.
+
+Parameters:
+- model_name (str): The name of the GPT4All model to use for completion.
+- prompt_text (str): The input prompt text for the model.
+- max_tokens (int): The maximum number of tokens for completion (default is 50).
+- temperature (float): The temperature parameter for controlling randomness in generation (default is 0.7).
+- **kwargs: Additional keyword arguments for the request payload.
+
+Returns:
+- dict: The JSON response containing the model's completion.
+"""

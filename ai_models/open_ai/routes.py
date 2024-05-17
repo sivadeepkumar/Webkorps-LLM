@@ -33,23 +33,18 @@ def cryoport():
     try:
         data = request.get_json()
         query = data['query']
-<<<<<<< HEAD
 
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         processed_data = process_query('cryoport_text.txt', query)
 
         return jsonify(processed_data)
     except Exception as e:
         logger.exception("An error occurred in /cryoport endpoint."+str(e))
-<<<<<<< HEAD
+
         return jsonify({'Error': str(e)}), 500
-=======
-        return jsonify({'Error': 'Internal Server Error'}), 500
->>>>>>> main
+
 
 @open_ai.route('/real-estate/text-generation', methods=['POST'])
 def realEstateQuery():
@@ -64,23 +59,17 @@ def realEstateQuery():
     try:
         data = request.get_json()
         query = data['query']
-<<<<<<< HEAD
 
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         processed_data = process_query('estate.txt', query)
 
         return jsonify(processed_data)
     except Exception as e:
         logger.exception("An error occurred in /realEstateQuery endpoint.")
-<<<<<<< HEAD
         return jsonify({'Error': str(e)}), 500
-=======
-        return jsonify({'error': 'Internal Server Error'}), 500
->>>>>>> main
+
 
 
 
@@ -97,22 +86,17 @@ def webkorps_query():
     try:
         data = request.get_json()
         query = data['query']
-<<<<<<< HEAD
+
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         processed_data = process_query('webkorps_data.txt', query)
 
         return jsonify(processed_data)
     except Exception as e:
         logger.exception("An error occurred in /webkorps_query endpoint.")
-<<<<<<< HEAD
+
         return jsonify({'Error': str(e)}), 500
-=======
-        return jsonify({'error': 'Internal Server Error'}), 500
->>>>>>> main
 
 
 @open_ai.route('/openai_response', methods=['POST'])
@@ -128,13 +112,10 @@ def assetpanda():
     try:
         data = request.get_json()
         query = data['query']
-<<<<<<< HEAD
 
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+       
         processed_data = process_query('assetpanda.txt', query)
 
         success_message = {
@@ -146,11 +127,9 @@ def assetpanda():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
+
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
+
         }
         return jsonify(failure_response)
 
@@ -162,12 +141,9 @@ def summary():
         data = request.get_json()
         query = data['query']
         source = data['source']
-<<<<<<< HEAD
+
         if not query:
             raise ValueError("Please enter a valid input.")
-=======
-
->>>>>>> main
 
         embeddings = OpenAIEmbeddings()  
         document_search = FAISS.from_texts([source], embeddings)
@@ -184,11 +160,7 @@ def summary():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 
@@ -199,13 +171,8 @@ def get_embedding(source,embeddings):
     chain = load_qa_chain(OpenAI(), chain_type="stuff")
     docs = document_search.similarity_search(query)
     result = chain.run(input_documents=docs, question=query)
-<<<<<<< HEAD
     return result.replace('\n', '')
-=======
-    cleaned_string = result.replace('\n', '')
 
-    return cleaned_string
->>>>>>> main
 
 @open_ai.route('/openai/form', methods=['POST'])
 def forms():
@@ -215,11 +182,8 @@ def forms():
     The result is returned in JSON format.
     Returns:
         JSON: Summary generated based on the input query and source.
-<<<<<<< HEAD
     """ 
-=======
-    """
->>>>>>> main
+
     # Input query
     # import pdb ; pdb.set_trace()
     try:
@@ -229,12 +193,9 @@ def forms():
         source = data['source']
         type = data['type']
 
-<<<<<<< HEAD
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         query_words = get_embedding(query,embeddings)
         print(query_words) 
 
@@ -266,11 +227,7 @@ def forms():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 

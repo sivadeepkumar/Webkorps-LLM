@@ -26,7 +26,7 @@ def bedrock_tech():
         Raises:
             None (Any errors in retrieving data from the knowledge base are handled internally within BedrockKBAgent).
     """
-<<<<<<< HEAD
+    
     try:
         data = request.get_json()
         query = data.get('query')
@@ -49,14 +49,6 @@ def bedrock_tech():
         "Response": str(e)
         }
         return jsonify(failure_response)
-=======
-
-    data = request.get_json()
-    query = data.get('query')
-    kb_id = os.getenv("kb_id")  #  or "QRJWFQFERS"
-    response = kb.retrieve_from_kb(kb_id, query)
-    return response['retrievalResults'] # [0]['content']
->>>>>>> main
 
 
 
@@ -150,11 +142,6 @@ def data_ingestion():
     
     # pdf_path = '../../sample_data/pdf_samples'
     loader = PyPDFDirectoryLoader("sample_data/pdf_samples")
-<<<<<<< HEAD
-    # import pdb ; pdb.set_trace()
-=======
-    # import pdb ; pdb.set_trace()s
->>>>>>> main
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
     docs = text_splitter.split_documents(documents)
@@ -253,13 +240,10 @@ def mistral_response():
     """
     try:
         user_question = request.json['query']
-<<<<<<< HEAD
 
         if not user_question:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
         llm = get_mistral_llm()
         response = get_response_llm(llm, faiss_index, user_question)
@@ -272,11 +256,8 @@ def mistral_response():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
+
         }
         return jsonify(failure_response)
 
@@ -291,12 +272,10 @@ def llama3_response():
     """
     try:
         user_question = request.json['query']
-<<<<<<< HEAD
+
         if not user_question:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
+
         faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
         llm = get_llama3_llm()
         response = get_response_llm(llm, faiss_index, user_question)
@@ -309,11 +288,8 @@ def llama3_response():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
+
         }
         return jsonify(failure_response)
 
@@ -330,13 +306,11 @@ def llama_source():
         data = request.get_json()
         query = data['query']
         source = data['source']
-<<<<<<< HEAD
+
         if not query:
             raise ValueError("Please enter a valid input.")
         
-=======
 
->>>>>>> main
         # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
         embeddings = bedrock_embeddings
 
@@ -361,11 +335,7 @@ def llama_source():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 
@@ -380,14 +350,11 @@ def mistral_source():
         data = request.get_json()
         query = data['query']
         source = data['source']
-<<<<<<< HEAD
+
         # Check if user_question is empty
         if not query:
             raise ValueError("Please enter a valid input.")
-        
-=======
 
->>>>>>> main
         # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
         embeddings = bedrock_embeddings
 
@@ -412,11 +379,7 @@ def mistral_source():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 
@@ -448,13 +411,10 @@ def mistral_form():
         source_data = request.json['source']
         type = request.json['type']
 
-<<<<<<< HEAD
         # Check if user_question is empty
         if not user_question:
             raise ValueError("Please enter a valid input.")
         
-=======
->>>>>>> main
 
         query = get_first_embedding(user_question)
         print(query)
@@ -488,11 +448,7 @@ def mistral_form():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 
@@ -510,13 +466,9 @@ def llama_form():
         source_data = request.json['source']
         type = request.json['type']
 
-<<<<<<< HEAD
         # Check if user_question is empty
         if not user_question:
             raise ValueError("Please enter a valid input.")
-        
-=======
->>>>>>> main
 
         query = get_first_embedding(user_question)
         print(query)
@@ -550,11 +502,7 @@ def llama_form():
     except Exception as e:
         failure_response = {
         "status": "Failure",
-<<<<<<< HEAD
         "Response": str(e)
-=======
-        "Response": e
->>>>>>> main
         }
         return jsonify(failure_response)
 

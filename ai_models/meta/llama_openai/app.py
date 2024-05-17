@@ -59,15 +59,10 @@ def query():
     try:
         data = request.get_json()
         user_query = data.get('query')
-<<<<<<< HEAD
-        if not query:
-            raise ValueError("Please enter a valid input.")
-   
-=======
+
         if not user_query:
             return jsonify({"error": "Query is required"}), 400
-        
->>>>>>> main
+
         response = query_engine.query(user_query)
 
         response_str = str(response.response)
@@ -81,8 +76,4 @@ def query():
         return jsonify({"response": response_str})
     except Exception as e:
         logging.error(f"An error occurred: {e}")
-<<<<<<< HEAD
         return jsonify({"error": str(e)}), 500
-=======
-        return jsonify({"error": "An error occurred"}), 500
->>>>>>> main

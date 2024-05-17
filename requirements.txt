@@ -2,7 +2,10 @@
 awscli==1.32.80
 # boto3
 boto3==1.34.80
+<<<<<<< HEAD
 langchain-text-splitters
+=======
+>>>>>>> main
 
 # # openai simple 
 # flask
@@ -38,6 +41,7 @@ ctransformers==0.2.27
 
 # # Gradient model
 # llama_index.embeddings.gradient
+<<<<<<< HEAD
 llama-index-embeddings-gradient
 
 
@@ -57,3 +61,24 @@ jsonlines==4.0.0
 nomic==3.0.23
 scikit-learn==1.3.2
 matplotlib==3.7.5
+=======
+llama-index-embeddings-gradient==0.1.2
+
+
+#gpt4all
+accelerate
+datasets
+einops
+torchmetrics
+evaluate
+transformers>=4.28.0
+wandb
+peft
+nodelist-inflator
+deepspeed
+sentencepiece
+jsonlines
+nomic
+scikit-learn
+matplotlib
+>>>>>>> main

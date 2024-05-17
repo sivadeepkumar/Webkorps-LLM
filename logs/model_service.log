@@ -1,11 +1,22 @@
+<<<<<<< HEAD
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+=======
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 02:25:27] "[33mPOST /open_ai_model/realEstate HTTP/1.1[0m" 404 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:faiss.loader:Loading faiss with AVX512 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 02:25:52] "POST /open_ai_model/realEstateQuery HTTP/1.1" 200 -
+>>>>>>> main
 INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:6000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
+<<<<<<< HEAD
 INFO:werkzeug: * Restarting with stat
 INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
@@ -14,12 +25,22 @@ WARNING:werkzeug: * Debugger is active!
 INFO:werkzeug: * Debugger PIN: 142-922-044
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
+=======
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:faiss.loader:Loading faiss with AVX512 support.
+INFO:faiss.loader:Successfully loaded faiss with AVX512 support.
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:26:39] "POST /open_ai_model/cryoport HTTP/1.1" 200 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:29:03] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+>>>>>>> main
 INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
 INFO:sentence_transformers.SentenceTransformer:Use pytorch device_name: cpu
 INFO:werkzeug:[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:6000
 INFO:werkzeug:[33mPress CTRL+C to quit[0m
+<<<<<<< HEAD
 INFO:werkzeug: * Restarting with watchdog (inotify)
 INFO:botocore.credentials:Found credentials in environment variables.
 INFO:sentence_transformers.SentenceTransformer:Load pretrained SentenceTransformer: sentence-transformers/all-mpnet-base-v2
@@ -2804,3 +2825,11 @@ INFO:werkzeug:127.0.0.1 - - [10/May/2024 22:33:58] "POST /open_ai_model/openai/f
 INFO:werkzeug:127.0.0.1 - - [10/May/2024 23:19:49] "[33mPOST /open_ai_model/mistral/form HTTP/1.1[0m" 404 -
 INFO:werkzeug:127.0.0.1 - - [10/May/2024 23:20:25] "POST /amazon_model/mistral/form HTTP/1.1" 200 -
 INFO:werkzeug:127.0.0.1 - - [10/May/2024 23:20:33] "POST /amazon_model/mistral/form HTTP/1.1" 200 -
+=======
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:30:29] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:31:05] "[33mPOST /open_ai_model/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:31:37] "[33mPOST /open_ai_model/llama_openai/text-generation HTTP/1.1[0m" 404 -
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:32:11] "[33mPOST /llama_openai/text-generation HTTP/1.1[0m" 404 -
+INFO:httpx:HTTP Request: POST https://api.openai.com/v1/chat/completions "HTTP/1.1 200 OK"
+INFO:werkzeug:127.0.0.1 - - [16/Apr/2024 15:33:01] "POST /meta/llama_openai/text-generation HTTP/1.1" 200 -
+>>>>>>> main

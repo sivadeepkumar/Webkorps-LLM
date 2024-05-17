@@ -43,6 +43,7 @@ retrieval_chain = create_retrieval_chain(retriever, document_chain)
 
 @app.route('/ollama_llama2', methods=['POST'])
 def answer_question():
+<<<<<<< HEAD
     try:
         query = request.json['query']
 
@@ -55,6 +56,11 @@ def answer_question():
          return jsonify({"Error": str(e)})
     
 
+=======
+    query = request.json['query']
+    response = retrieval_chain.invoke({"input": query})
+    return jsonify({'answer': response['answer']})
+>>>>>>> main
 
 
 if __name__ == '__main__':

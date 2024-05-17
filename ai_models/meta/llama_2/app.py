@@ -58,16 +58,14 @@ def generate_response():
     try:
         # Get the query from the request body
         data = request.get_json()
-<<<<<<< HEAD
-        
+
         user_query = data.get('query')
 
         if not user_query:
             raise ValueError("Please enter a valid input.")
 
-=======
         user_query = data.get('query')
->>>>>>> main
+
         print(user_query)
         # Check if the query is provided
         if not user_query:
@@ -79,11 +77,8 @@ def generate_response():
         return jsonify({"response": response_str})
     except Exception as e:
         # logging.error(f"An error occurred: {e}")
-<<<<<<< HEAD
         return jsonify({"error": str(e)}), 500
-=======
-        return jsonify({"error": "An error occurred"}), 500
->>>>>>> main
+
 
 
 if __name__ == '__main__':

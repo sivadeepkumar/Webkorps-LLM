@@ -8,6 +8,9 @@ from dotenv import load_dotenv
 import os
 import logging
 from langchain_openai import ChatOpenAI
+from ai_models.open_ai.routes import api ,query_model
+from flask_restx import Resource, fields
+
 
 load_dotenv()
 logging.basicConfig(filename='../logs/llama_openai_model.log', level=logging.INFO)
@@ -18,6 +21,7 @@ os.environ["LANGCHAIN_TRACING_V2"]="true"
 
 api_key = os.getenv("OPENAI_API_KEY")
 documents = SimpleDirectoryReader("./sample_data/pdf_samples").load_data()
+
 embed_model = HuggingFaceEmbeddings(model_name="sentence-transformers/all-mpnet-base-v2")
 
 llm = ChatOpenAI(
@@ -40,39 +44,43 @@ query_engine = index.as_query_engine()
 
 routes = Blueprint('llama_openai_model', __name__)
 
-@routes.route('/text-generation', methods=['POST'])
-def query():
-    """
-    Processes a query using the LLAMA OpenAI model and returns a response.
+class openai_full_source(Resource):
+    @api.expect(query_model)
+    def post(self):
+        """
+        Processes a query using the LLAMA OpenAI model and returns a response.
 
-    This endpoint takes a POST request with a JSON payload containing the 'query' key representing the user's query. It processes the query using the LLAMA OpenAI model and returns the response in JSON format.
+        This endpoint takes a POST request with a JSON payload containing the 'query' key representing the user's query. It processes the query using the LLAMA OpenAI model and returns the response in JSON format.
 
-    Parameters:
-        None (Request payload contains the 'query' key with the user's query string).
+        Parameters:
+            None (Request payload contains the 'query' key with the user's query string).
 
-    Returns:
-        JSON: A JSON response containing the processed response from the LLAMA OpenAI model.
+        Returns:
+            JSON: A JSON response containing the processed response from the LLAMA OpenAI model.
 
-    Raises:
-        Exception: If any error occurs during the processing of the query, an error response with status code 500 is returned.
-    """
-    try:
-        data = request.get_json()
-        user_query = data.get('query')
-        if not query:
-            raise ValueError("Please enter a valid input.")
-   
-        response = query_engine.query(user_query)
+        Raises:
+            Exception: If any error occurs during the processing of the query, an error response with status code 500 is returned.
+        """
+        try:
+            data = request.get_json()
+            user_query = data.get('query')
+            if not user_query:
+                raise ValueError("Please enter a valid input.")
+    
+            response = query_engine.query(user_query)
 
-        response_str = str(response.response)
-        data = {"response":response}
+            response_str = str(response.response)
+            data = {"response":response}
 
-        scores = [node.score for node in data['response'].source_nodes]
-        print(scores)
-        if scores[0] < 0.2:
-            return jsonify({"response":"Please request the query related to documents","data": response_str})
+            scores = [node.score for node in data['response'].source_nodes]
+            print(scores)
+            if scores[0] < 0.2:
+                return jsonify({"additional_response":"Please request the query related to documents","response": response_str})
 
-        return jsonify({"response": response_str})
-    except Exception as e:
-        logging.error(f"An error occurred: {e}")
-        return jsonify({"error": str(e)}), 500
+            return jsonify({"response": response_str})
+        except Exception as e:
+            logging.error(f"An error occurred: {e}")
+            return jsonify({"error": str(e)}), 500
+
+
+api.add_resource(openai_full_source,'/meta/embed_model/openai')

@@ -1,5 +1,5 @@
 import boto3
-from flask import Flask, render_template, request,jsonify
+from flask import render_template, request,jsonify
 from flask import Blueprint
 from .helper import BedrockKBAgent
 import os 
@@ -8,58 +8,13 @@ import os
 aws_ai = Blueprint('amazon_model', __name__)
 kb = BedrockKBAgent()
 client = boto3.client('comprehend', region_name='us-east-1')
-
-
-@aws_ai.route('/bedrock', methods=['POST'])
-def bedrock_tech():
-    """
-        Handles queries related to a specific knowledge base using BedrockKBAgent.
-
-        This endpoint takes a POST request with a JSON payload containing the 'query' key representing the user's query. It uses BedrockKBAgent to retrieve information from a specific knowledge base identified by the 'kb_id' variable and returns the retrieval results in JSON format.
-
-        Parameters:
-            None (Request payload contains the 'query' key with the user's query string).
-
-        Returns:
-            JSON: A JSON response containing the retrieval results from the specified knowledge base.
-
-        Raises:
-            None (Any errors in retrieving data from the knowledge base are handled internally within BedrockKBAgent).
-    """
-    try:
-        data = request.get_json()
-        query = data.get('query')
-        if not query:
-            raise ValueError("Please enter a valid input.")
-        
-        kb_id = os.getenv("kb_id")  #  or "QRJWFQFERS"
-        response = kb.retrieve_from_kb(kb_id, query)
-        response =  response['retrievalResults'] # [0]['content']
-        
-        success_message = {
-                                "status": "Success",
-                                "Response": response
-                        }
-        return jsonify(success_message)
-                
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
-
-
-
-from flask import Flask, request, jsonify, g
-from langchain.embeddings.openai import OpenAIEmbeddings
+from flask_restx import Resource
+from ai_models.open_ai.routes import api,query_model,query_model_source,query_model_form
 from langchain_community.vectorstores.faiss import FAISS 
-from langchain_community.llms.openai import OpenAI
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 import boto3
 
 # Initialize AWS services and models
-region_name = 'us-east-1' 
 from langchain_community.embeddings import BedrockEmbeddings
 from langchain.llms.bedrock import Bedrock
 from langchain_community.document_loaders import PyPDFDirectoryLoader
@@ -83,19 +38,57 @@ logger = logging.getLogger(__name__)
 
 
 
+region_name = 'us-east-1' 
+
+class bedrock_tech(Resource):
+    @api.expect(query_model)
+    def post(self):
+        """
+            Handles queries related to a specific knowledge base using BedrockKBAgent.
+
+            This endpoint takes a POST request with a JSON payload containing the 'query' key representing the user's query. It uses BedrockKBAgent to retrieve information from a specific knowledge base identified by the 'kb_id' variable and returns the retrieval results in JSON format.
+
+            Parameters:
+                None (Request payload contains the 'query' key with the user's query string).
+
+            Returns:
+                JSON: A JSON response containing the retrieval results from the specified knowledge base.
+
+            Raises:
+                None (Any errors in retrieving data from the knowledge base are handled internally within BedrockKBAgent).
+        """
+        try:
+            data = request.get_json()
+            query = data.get('query')
+            if not query:
+                raise ValueError("Please enter a valid input.")
+            
+            kb_id = os.getenv("kb_id")  #  or "QRJWFQFERS"
+            response = kb.retrieve_from_kb(kb_id, query)
+            response =  response['retrievalResults'] # [0]['content']
+            
+            success_message = {
+                                    "status": "Success",
+                                    "Response": response
+                            }
+            return jsonify(success_message)
+                    
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
+            }
+            return jsonify(failure_response)
+
+
+
+
+
 
 
 @aws_ai.route('/health', methods=['GET'])
 def health_check():
     return 'OK', 200
-
-
-
-
-
-
-
-
 
 
 # manual_ingestion
@@ -145,7 +138,6 @@ def data_ingestion():
     documents = loader.load()
     text_splitter = RecursiveCharacterTextSplitter(chunk_size=10000, chunk_overlap=1000)
     docs = text_splitter.split_documents(documents)
-    # pdb.set_trace()
     return docs
 
 # Vector embedding and vector store function
@@ -217,165 +209,186 @@ def get_response_llm(llm, vectorstore_faiss, query):
     return answer
 
 # Route for updating vector base using GET request
-@aws_ai.route('/update_vector_base', methods=['GET'])
-def update_vector_base():
-    """
-    Updates the vector base using a GET request.
+class update_vector_base(Resource):
+    def get(self):
+        """
+        Updates the vector base using a GET request.
 
-    Returns:
-    - str: Success message if the vector base is updated successfully.
-    """
-    docs = data_ingestion()
-    get_vector_store(docs)
-    return 'Vectors Updated Successfully'
+        Returns:
+        - str: Success message if the vector base is updated successfully.
+        """
+        docs = data_ingestion()
+        get_vector_store(docs)
+        return 'Vectors Updated Successfully'
 
-# Route for Mistral model response using POST request
-@aws_ai.route('/mistral_response', methods=['POST'])
-def mistral_response():
-    """
-    Handles POST requests for Mistral model responses.
 
-    Returns:
-    - JSON: Response message containing status and processed data.
-    """
-    try:
-        user_question = request.json['query']
 
-        if not user_question:
-            raise ValueError("Please enter a valid input.")
-        
-        faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-        llm = get_mistral_llm()
-        response = get_response_llm(llm, faiss_index, user_question)
-        success_message = {
-                                "status": "Success",
-                                "Response": response
-                        }
-        return jsonify(success_message)
-                
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
+class mistral_response(Resource):
+    @api.expect(query_model)
+    def post(self):
+        """
+        Handles POST requests for Mistral model responses.
+
+        Returns:
+        - JSON: Response message containing status and processed data.
+        """
+        try:
+            user_question = request.json['query']
+
+            if not user_question:
+                raise ValueError("Please enter a valid input.")
+
+            faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
+            llm = get_mistral_llm()
+            response = get_response_llm(llm, faiss_index, user_question)
+            success_message = {
+                                    "status": "Success",
+                                    "Response": response
+                            }
+            return jsonify(success_message)
+                    
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
+
+            }
+            return jsonify(failure_response)
+
+
 
 # Route for Llama2 model response using POST request
-@aws_ai.route('/llama_response', methods=['POST'])
-def llama3_response():
-    """
-    Handles POST requests for Llama2 model responses.
+class llama3_response(Resource):
+    @api.expect(query_model)
+    def post(self):
+        """
+        Handles POST requests for Llama2 model responses.
 
-    Returns:
-    - JSON: Response message containing status and processed data.
-    """
-    try:
-        user_question = request.json['query']
-        if not user_question:
-            raise ValueError("Please enter a valid input.")
-        
-        faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-        llm = get_llama3_llm()
-        response = get_response_llm(llm, faiss_index, user_question)
-        success_message = {
+        Returns:
+        - JSON: Response message containing status and processed data.
+        """
+        try:
+            user_question = request.json['query']
+
+            if not user_question:
+                raise ValueError("Please enter a valid input.")
+
+            faiss_index = FAISS.load_local("sample_data/faiss_index", bedrock_embeddings, allow_dangerous_deserialization=True)
+            llm = get_llama3_llm()
+            response = get_response_llm(llm, faiss_index, user_question)
+            success_message = {
+                                    "status": "Success",
+                                    "Response": response
+                            }
+            return jsonify(success_message)
+                    
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
+
+            }
+            return jsonify(failure_response)
+
+
+
+class llama_source(Resource):
+    @api.expect(query_model_source)
+    def post(self):
+        """
+        Endpoint for querying data using Llama3 LLM.
+
+        Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
+        """
+        try:
+            data = request.get_json()
+            query = data['query']
+            source = data['source']
+
+            if not query:
+                raise ValueError("Please enter a valid input.")
+            
+
+            # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
+            embeddings = bedrock_embeddings
+
+            # Load LLM from Amazon Bedrock (replace 'get_llm' with the actual function for loading Amazon Bedrock LLM)
+            llm = get_llama3_llm()
+
+            # Create FAISS index from source data
+            document_search = FAISS.from_texts([source], embeddings)
+
+            # Assuming load_qa_chain is a function to load your QA chain
+            chain = load_qa_chain(llm, chain_type="stuff")
+
+            # Perform similarity search and run the QA chain
+            docs = document_search.similarity_search(query)
+            result = chain.run(input_documents=docs, question=query)
+            success_message = {
                                 "status": "Success",
-                                "Response": response
+                                "Response": result
                         }
-        return jsonify(success_message)
-                
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
+            return jsonify(success_message)
+            
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
+            }
+            return jsonify(failure_response)
 
 
 
-@aws_ai.route('/llama/source', methods=['POST'])
-def llama_source():
-    """
-    Endpoint for querying data using Llama3 LLM.
 
-    Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
-    """
-    try:
-        data = request.get_json()
-        query = data['query']
-        source = data['source']
-        if not query:
-            raise ValueError("Please enter a valid input.")
-        
-        # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
-        embeddings = bedrock_embeddings
+class mistral_source(Resource):
+    @api.expect(query_model_source)
+    def post(self):
+        """
+        Endpoint for querying data using Mistral LLM.
 
-        # Load LLM from Amazon Bedrock (replace 'get_llm' with the actual function for loading Amazon Bedrock LLM)
-        llm = get_llama3_llm()
+        Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
+        """ 
+        try:
+            data = request.get_json()
+            query = data['query']
+            source = data['source']
 
-        # Create FAISS index from source data
-        document_search = FAISS.from_texts([source], embeddings)
+            # Check if user_question is empty
+            if not query:
+                raise ValueError("Please enter a valid input.")
 
-        # Assuming load_qa_chain is a function to load your QA chain
-        chain = load_qa_chain(llm, chain_type="stuff")
+            # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
+            embeddings = bedrock_embeddings
 
-        # Perform similarity search and run the QA chain
-        docs = document_search.similarity_search(query)
-        result = chain.run(input_documents=docs, question=query)
-        success_message = {
+            # Load LLM from Amazon Bedrock (replace 'get_llm' with the actual function for loading Amazon Bedrock LLM)
+            llm = get_mistral_llm()
+
+            # Create FAISS index from source data
+            document_search = FAISS.from_texts([source], embeddings)
+
+            # Assuming load_qa_chain is a function to load your QA chain
+            chain = load_qa_chain(llm, chain_type="stuff")
+
+            # Perform similarity search and run the QA chain
+            docs = document_search.similarity_search(query)
+            
+            result = chain.run(input_documents=docs, question=query)
+            success_message = {
                             "status": "Success",
                             "Response": result
                     }
-        return jsonify(success_message)
+            return jsonify(success_message)
             
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
+            }
+            return jsonify(failure_response)
 
-@aws_ai.route('/mistral/source', methods=['POST'])
-def mistral_source():
-    """
-    Endpoint for querying data using Mistral LLM.
 
-    Retrieves a user query and source data, performs a similarity search, and runs a QA chain to generate a response.
-    """ 
-    try:
-        data = request.get_json()
-        query = data['query']
-        source = data['source']
-        # Check if user_question is empty
-        if not query:
-            raise ValueError("Please enter a valid input.")
-        
-        # Load embeddings model (replace 'Your_Embeddings_Model' with the actual name of your embeddings model)
-        embeddings = bedrock_embeddings
 
-        # Load LLM from Amazon Bedrock (replace 'get_llm' with the actual function for loading Amazon Bedrock LLM)
-        llm = get_mistral_llm()
 
-        # Create FAISS index from source data
-        document_search = FAISS.from_texts([source], embeddings)
-
-        # Assuming load_qa_chain is a function to load your QA chain
-        chain = load_qa_chain(llm, chain_type="stuff")
-
-        # Perform similarity search and run the QA chain
-        docs = document_search.similarity_search(query)
-        result = chain.run(input_documents=docs, question=query)
-        success_message = {
-                        "status": "Success",
-                        "Response": result
-                }
-        return jsonify(success_message)
-        
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
 
 def get_first_embedding(source_data):
     """
@@ -393,114 +406,125 @@ def get_first_embedding(source_data):
 
         
 
-@aws_ai.route('/mistral/form', methods=['POST'])
-def mistral_form():
-    """
-    Endpoint for generating form-related information using Llama3 LLM.
+class mistral_form(Resource):
+    @api.expect(query_model_form)
+    def post(self):
+        """
+        Endpoint for generating form-related information using Llama3 LLM.
 
-    Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
-    """
-    try:
-        user_question = request.json['query']
-        source_data = request.json['source']
-        type = request.json['type']
+        Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
+        """
+        try:
+            user_question = request.json['query']
+            source_data = request.json['source']
+            type = request.json['type']
 
-        # Check if user_question is empty
-        if not user_question:
-            raise ValueError("Please enter a valid input.")
+            # Check if user_question is empty
+            if not user_question:
+                raise ValueError("Please enter a valid input.")
+            
+
+            query = get_first_embedding(user_question)
+            print(query)
+            
+            docs = manual_ingestion(source_data)
+            manual_vector_store(docs)
+
+
+            if type == "create":
+                user_question = f"provide me the relevant columns name in array only for {query} would be."
+            else:
+                target_word = query.replace("form", "")
+                user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
+
+            
+            
+            # FROM STORED DATA IT WILL RETRIEVE 
+            faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
+
+            # Assuming these functions are defined elsewhere
+            llm = get_mistral_llm()
+            response = get_response_llm(llm, faiss_index, user_question)
+
+
+            success_message = {
+                    "status": "Success",
+                    "Response": response
+                }
+            return jsonify(success_message)
         
-
-        query = get_first_embedding(user_question)
-        print(query)
-        
-        docs = manual_ingestion(source_data)
-        manual_vector_store(docs)
-
-
-        if type == "create":
-            user_question = f"provide me the relevant columns name in array only for {query} would be."
-        else:
-            target_word = query.replace("form", "")
-            user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
-
-        
-        
-        # FROM STORED DATA IT WILL RETRIEVE 
-        faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-
-        # Assuming these functions are defined elsewhere
-        llm = get_mistral_llm()
-        response = get_response_llm(llm, faiss_index, user_question)
-
-
-        success_message = {
-                "status": "Success",
-                "Response": response
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
             }
-        return jsonify(success_message)
-    
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
+            return jsonify(failure_response)
 
 
 
-@aws_ai.route('/llama/form', methods=['POST'])
-def llama_form():
-    """
-    Endpoint for generating form-related information using Llama3 LLM.
 
-    Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
-    """
-    try:
-        user_question = request.json['query']
-        source_data = request.json['source']
-        type = request.json['type']
+class llama_form(Resource):
+    @api.expect(query_model_form)
+    def post(self):
+        """
+        Endpoint for generating form-related information using Llama3 LLM.
 
-        # Check if user_question is empty
-        if not user_question:
-            raise ValueError("Please enter a valid input.")
+        Retrieves a user question and source data, generates the first embedding, and uses it to request relevant information.
+        """
+        try:
+            user_question = request.json['query']
+            source_data = request.json['source']
+            type = request.json['type']
+
+            # Check if user_question is empty
+            if not user_question:
+                raise ValueError("Please enter a valid input.")
+
+            query = get_first_embedding(user_question)
+            print(query)
+            
+            docs = manual_ingestion(source_data)
+            manual_vector_store(docs)
+
+
+            if type == "create":
+                user_question = f"provide me the relevant columns name in array only for {query} would be."
+            else:
+                target_word = query.replace("form", "")
+                user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
+
+            
+            
+            # FROM STORED DATA IT WILL RETRIEVE 
+            faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
+
+            # Assuming these functions are defined elsewhere
+            llm = get_llama3_llm()
+            response = get_response_llm(llm, faiss_index, user_question)
+
+
+            success_message = {
+                    "status": "Success",
+                    "Response": response
+                }
+            return jsonify(success_message)
         
-
-        query = get_first_embedding(user_question)
-        print(query)
-        
-        docs = manual_ingestion(source_data)
-        manual_vector_store(docs)
-
-
-        if type == "create":
-            user_question = f"provide me the relevant columns name in array only for {query} would be."
-        else:
-            target_word = query.replace("form", "")
-            user_question = f"provide me the relevant columns name in array only for updating {target_word} would be."
-
-        
-        
-        # FROM STORED DATA IT WILL RETRIEVE 
-        faiss_index = FAISS.load_local("sample_data/manual_index", bedrock_embeddings, allow_dangerous_deserialization=True)
-
-        # Assuming these functions are defined elsewhere
-        llm = get_llama3_llm()
-        response = get_response_llm(llm, faiss_index, user_question)
-
-
-        success_message = {
-                "status": "Success",
-                "Response": response
+        except Exception as e:
+            failure_response = {
+            "status": "Failure",
+            "Response": str(e)
             }
-        return jsonify(success_message)
-    
-    except Exception as e:
-        failure_response = {
-        "status": "Failure",
-        "Response": str(e)
-        }
-        return jsonify(failure_response)
+            return jsonify(failure_response)
 
 
 
 
+
+api.add_resource(update_vector_base,'/amazon_model/update_vector_base')
+api.add_resource(mistral_response,'/amazon_model/mistral_response')
+api.add_resource(mistral_source,'/amazon_model/mistral/source')
+api.add_resource(mistral_form,'/amazon_model/mistral/form')
+api.add_resource(llama3_response,'/amazon_model/llama_response')
+api.add_resource(llama_source,'/amazon_model/llama/source')
+api.add_resource(llama_form,'/amazon_model/llama/form')
+api.add_resource(bedrock_tech,'/amazon_model/bedrock')
